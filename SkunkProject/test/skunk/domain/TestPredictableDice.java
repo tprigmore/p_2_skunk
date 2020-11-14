@@ -35,6 +35,12 @@ class TestPredictableDice {
 		Dice dice = new Dice(die1, die2);
 		dice.roll();
 		assertEquals(DiceState.DOUBLE_SKUNK, dice.getState());
+		dice.roll();
+		assertEquals(DiceState.SKUNK_DEUCE, dice.getState());
+		dice.roll();
+		assertEquals(DiceState.SKUNK, dice.getState());
+		dice.roll();
+		assertEquals(DiceState.GOOD, dice.getState());
 		}
 
 }
