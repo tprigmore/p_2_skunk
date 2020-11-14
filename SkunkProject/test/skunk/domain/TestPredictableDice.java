@@ -49,7 +49,7 @@ class TestPredictableDice {
 		Die die2 = new PredictableDie(new int[] {1,1,3,4});
 		Dice dice = new Dice(die1, die2);
 		dice.roll();
-		assertEquals("Dice with last roll: 2 => 1 + 1 ", dice.toString());
+		assertEquals("Dice with last roll: 2 => 1 + 1", dice.toString());
 		}
 
 }
