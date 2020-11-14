@@ -7,7 +7,7 @@ import org.junit.Test;
 public class TestPredictableDie {
 
 	@Test
-	public void test() {
+	public void test_predictable_die_123() {
 		fail("Not yet implemented");
 	}
 
