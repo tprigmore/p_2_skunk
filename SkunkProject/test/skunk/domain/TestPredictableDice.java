@@ -22,6 +22,11 @@ class TestPredictableDice {
 		Dice dice = new Dice(die1, die2);
 		dice.roll();
 		assertEquals(2, dice.getLastRoll());
+		dice.roll();
+		assertEquals(4, dice.getLastRoll());
+		dice.roll();
+		assertEquals(6, dice.getLastRoll());
+
 	}
 
 }
