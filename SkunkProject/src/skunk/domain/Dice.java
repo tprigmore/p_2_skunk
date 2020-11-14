@@ -17,8 +17,8 @@ public class Dice
 	// Convention: put at top
 
 	private int lastRoll;
-	private Die die1;
-	private Die die2;
+	private DieReal die1;
+	private DieReal die2;
 
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
@@ -28,12 +28,12 @@ public class Dice
 		// initialize instance variables die1 and die2 by
 		// creating a new instance of each
 
-		this.die1 = new Die();
-		this.die2 = new Die();
+		this.die1 = new DieReal();
+		this.die2 = new DieReal();
 		this.roll();
 	}
 
-	public Dice(Die die1, Die die2) // overloaded constructor
+	public Dice(DieReal die1, DieReal die2) // overloaded constructor
 	{
 		this.die1 = die1;
 		this.die2 = die2;

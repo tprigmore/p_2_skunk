@@ -8,7 +8,8 @@ public class TestPredictableDie {
 
 	@Test
 	public void test_predictable_die_123() {
-		fail("Not yet implemented");
+		Die die = new PredictableDie();
+		assertEquals(1, die.getLastRoll());
 	}
 
 }

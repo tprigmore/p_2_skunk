@@ -7,7 +7,7 @@ public class TestDie
 {
 
 	@Test
-	public void test()
+	public void test_die()
 	{
 		fail("Not yet implemented");
 	}
