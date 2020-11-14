@@ -21,7 +21,12 @@ public class PredictableDie implements Die {
 
 	@Override
 	public void roll() {
-		this.lastRoll = 1;
+		this.lastRoll = this.theRolls[this.index];
+		this.index++;
+		if (this.index == this.theRolls.length)
+		{
+			this.index = 0;
+		}
 	}
 	
 	@Override
