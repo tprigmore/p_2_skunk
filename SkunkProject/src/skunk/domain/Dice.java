@@ -72,7 +72,6 @@ public class Dice
 		else {
 			state = DiceState.GOOD;
 		}
-
 	}
 
 	public DiceState getState() {
@@ -84,7 +83,6 @@ public class Dice
 	//
 	// Roll of 7 => 4 + 3
 	//
-
 	public String toString()
 	{
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
