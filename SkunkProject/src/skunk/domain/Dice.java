@@ -15,7 +15,8 @@ public class Dice
 {
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
-
+	
+	private DiceState state;
 	private int lastRoll;
 	private Die die1;
 	private Die die2;
@@ -38,6 +39,7 @@ public class Dice
 		this.die1 = die1;
 		this.die2 = die2;
 		this.lastRoll = 2;
+		this.state = DiceState.DOUBLE_SKUNK;
 	}
 
 	// Instance methods can also be declared anywhere in body of class
@@ -55,8 +57,26 @@ public class Dice
 
 		die1.roll();
 		die2.roll();
-		this.lastRoll = die1.getLastRoll() + die2.getLastRoll();
+		int value1 = die1.getLastRoll() ;
+		int value2 = die2.getLastRoll() ;
+		this.lastRoll = value1 + value2;
+		if (this.lastRoll == 2) {
+			state = DiceState.DOUBLE_SKUNK;
+		}
+		else if (this.lastRoll == 3) {
+			state = DiceState.SKUNK_DEUCE;
+		}
+		else if ((value1 == 1) || (value2 == 1)) {
+			state = DiceState.SKUNK;
+		}
+		else {
+			state = DiceState.GOOD;
+		}
 
+	}
+
+	public DiceState getState() {
+		return DiceState.SKUNK;
 	}
 
 	// the following method converts the internals of
@@ -70,27 +90,4 @@ public class Dice
 		return "Dice with last roll: " + getLastRoll() + " => " + die1.getLastRoll() + " + " + die2.getLastRoll();
 	}
 
-	// static methods can go anywhere - but at end is one convention
-
-	public static final int NUM_TRIALS = 360;
-
-	public static void main(String[] args)
-	{
-		// simulate repeated rolls of Dice, counting the many double skunks
-		
-		Dice dice = new Dice();
-		int doubleSkunkCount = 0;
-
-		for (int i = 0; i < NUM_TRIALS; i++)
-		{
-			dice.roll();
-			StdOut.println(dice);
-
-			if (dice.getLastRoll() == 2)
-				doubleSkunkCount++;
-		}
-
-		StdOut.println("Actual count: " + doubleSkunkCount);
-		StdOut.println("Expected count: " + (NUM_TRIALS / 36.0));
-	}
 }
