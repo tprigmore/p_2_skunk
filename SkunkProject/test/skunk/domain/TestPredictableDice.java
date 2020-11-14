@@ -8,6 +8,9 @@ class TestPredictableDice {
 
 	@Test
 	void test_predictable_dice_constructor() {
+		Die die1 = new PredictableDie();
+		Die die2 = new PredictableDie();
+		Dice dice = new Dice(die1, die2);
 		fail("Not yet implemented");
 	}
 
