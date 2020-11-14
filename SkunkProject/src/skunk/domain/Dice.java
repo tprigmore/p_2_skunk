@@ -76,7 +76,7 @@ public class Dice
 	}
 
 	public DiceState getState() {
-		return DiceState.SKUNK;
+		return this.state;
 	}
 
 	// the following method converts the internals of
