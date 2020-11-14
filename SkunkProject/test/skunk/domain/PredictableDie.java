@@ -20,6 +20,10 @@ public class PredictableDie implements Die {
 	}
 
 	@Override
+	public void roll() {
+	}
+	
+	@Override
 	public int getLastRoll() {
 		return this.lastRoll;
 	}
