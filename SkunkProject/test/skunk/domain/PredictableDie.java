@@ -28,7 +28,7 @@ public class PredictableDie implements Die {
 			this.index = 0;
 		}
 	}
-	
+
 	@Override
 	public int getLastRoll() {
 		return this.lastRoll;

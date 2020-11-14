@@ -17,4 +17,13 @@ public class TestPredictableDie {
 		assertEquals(3, die.getLastRoll());
 	}
 
+	@Test
+    public void test_predictable_die_more_than_once() {
+		Die die = new PredictableDie(new int[] {1});
+		die.roll();
+		assertEquals(1, die.getLastRoll());
+		die.roll();
+		assertEquals(2, die.getLastRoll());
+	}
+
 }
