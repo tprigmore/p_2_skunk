@@ -10,7 +10,9 @@ class TestGame
 	@Test
 	void test_game_constructor()
 	{
-		fail("Not yet implemented");
+		Game game = new Game();
+		
+		assertEquals(GameState.PLAYING, game.getState());
 	}
 
 }
