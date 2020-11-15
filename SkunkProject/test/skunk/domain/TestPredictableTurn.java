@@ -51,6 +51,8 @@ class TestPredictableTurn {
 		assertEquals(4, kitty.getKitty());
 		turn.takeATurn();
 		assertEquals(6, kitty.getKitty());
+		turn.takeATurn();
+		assertEquals(7, kitty.getKitty());
 
 	}
 }
