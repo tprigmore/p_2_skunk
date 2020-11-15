@@ -91,8 +91,8 @@ class TestPredictableTurn {
 		assertEquals(0, player.getTurnPoints());
 		turn.takeATurn();
 		assertEquals(7, player.getTurnPoints());
-//		turn.takeATurn();
-//		assertEquals(0, player.getGamePoints());
+		turn.takeATurn();
+		assertEquals(1, player.getGamePoints());
 	}
 
 }
