@@ -24,6 +24,9 @@ public class Turn {
 	public void takeATurn() {
 		this.dice.roll();
 		this.state = dice.getState();
+		if(this.state == DiceState.DOUBLE_SKUNK) {
+			this.kitty.setKitty(this.kitty.getKitty() + 4); 
+		}
 	}
 
 }

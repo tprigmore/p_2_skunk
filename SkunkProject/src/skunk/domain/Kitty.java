@@ -5,10 +5,10 @@ public class Kitty {
 	private int chips;
 	
 	public Kitty() {
-		setKitty(50);
+		setKitty(0);
 	}
 	
-	private void setKitty(int chips) {
+	public void setKitty(int chips) {
 		this.chips = chips;
 	}
 
