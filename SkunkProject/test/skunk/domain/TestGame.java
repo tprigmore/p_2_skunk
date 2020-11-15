@@ -12,7 +12,7 @@ class TestGame
 	{
 		Game game = new Game();
 		
-		assertEquals(GameState.PLAYING, game.getState());
+		assertEquals(GameState.IDLE, game.getState());
 	}
 
 }
