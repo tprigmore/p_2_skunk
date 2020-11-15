@@ -21,4 +21,9 @@ public class Turn {
 		this.dice = dice;
 	}
 
+	public void takeAturn() {
+		
+		
+	}
+
 }
