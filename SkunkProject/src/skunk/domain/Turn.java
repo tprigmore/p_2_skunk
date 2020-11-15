@@ -36,6 +36,9 @@ public class Turn {
 			this.kitty.setKitty(this.kitty.getKitty() + 1); 
 			this.player.setChips(this.player.getChips() - 1);
 		}
+		else {
+			this.player.setGamePoints(this.player.getGamePoints() +  dice.getLastRoll());
+		}
 	}
 
 }
