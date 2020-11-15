@@ -7,7 +7,7 @@ public class Player {
 		this.setChips(50);
 	}
 
-	private void setChips(int chips) {
+	public void setChips(int chips) {
 		this.chips = chips;
 		
 	}

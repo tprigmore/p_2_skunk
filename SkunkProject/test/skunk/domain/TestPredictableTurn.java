@@ -13,7 +13,6 @@ class TestPredictableTurn {
 		Dice dice = new Dice(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
-
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
 	}
@@ -25,7 +24,6 @@ class TestPredictableTurn {
 		Dice dice = new Dice(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
-
 		Turn turn = new Turn(dice, kitty, player);
 		turn.takeATurn();
 		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
@@ -44,7 +42,6 @@ class TestPredictableTurn {
 		Dice dice = new Dice(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
-
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(0, kitty.getKitty());
 		turn.takeATurn();
@@ -62,11 +59,13 @@ class TestPredictableTurn {
 		Dice dice = new Dice(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
-
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(50, player.getChips());
 		turn.takeATurn();
 		assertEquals(46, player.getChips());
-
+		turn.takeATurn();
+		assertEquals(44, player.getChips());
+		turn.takeATurn();
+		assertEquals(43, player.getChips());
 	}
 }
