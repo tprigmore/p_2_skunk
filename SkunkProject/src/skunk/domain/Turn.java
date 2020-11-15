@@ -27,6 +27,9 @@ public class Turn {
 		if(this.state == DiceState.DOUBLE_SKUNK) {
 			this.kitty.setKitty(this.kitty.getKitty() + 4); 
 		}
+		else if (this.state == DiceState.SKUNK_DEUCE) {
+			this.kitty.setKitty(this.kitty.getKitty() + 2); 
+		}
 	}
 
 }
