@@ -53,6 +53,17 @@ class TestPredictableTurn {
 		assertEquals(6, kitty.getKitty());
 		turn.takeATurn();
 		assertEquals(7, kitty.getKitty());
+	}
+	
+	@Test
+	void test_predictable_turn_player_chips() {
+		Die die1 = new PredictableDie(new int[] {1,2,1,3});
+		Die die2 = new PredictableDie(new int[] {1,1,3,4});
+		Dice dice = new Dice(die1, die2);
+		Kitty kitty = new Kitty();
+		Player player = new Player();
 
+		Turn turn = new Turn(dice, kitty, player);
+		assertEquals(50, player.getChips());
 	}
 }
