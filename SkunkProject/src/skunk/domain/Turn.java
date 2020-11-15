@@ -27,6 +27,7 @@ public class Turn {
 		if(this.state == DiceState.DOUBLE_SKUNK) {
 			this.kitty.setKitty(this.kitty.getKitty() + 4); 
 			this.player.setChips(this.player.getChips() - 4);
+			this.player.setGamePoints(0);
 		}
 		else if (this.state == DiceState.SKUNK_DEUCE) {
 			this.kitty.setKitty(this.kitty.getKitty() + 2); 
