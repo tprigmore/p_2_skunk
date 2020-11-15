@@ -30,6 +30,10 @@ public class Turn {
 		else if (this.state == DiceState.SKUNK_DEUCE) {
 			this.kitty.setKitty(this.kitty.getKitty() + 2); 
 		}
+		else if (this.state == DiceState.SKUNK) {
+			this.kitty.setKitty(this.kitty.getKitty() + 1); 
+		}
+
 	}
 
 }
