@@ -38,7 +38,7 @@ public class Turn {
 			this.player.setChips(this.player.getChips() - 1);
 		}
 		else {
-			this.player.setGamePoints(this.player.getGamePoints() +  dice.getLastRoll());
+			this.player.setTurnPoints(this.player.getTurnPoints() +  dice.getLastRoll());
 		}
 	}
 
