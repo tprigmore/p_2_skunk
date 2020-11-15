@@ -48,6 +48,7 @@ class TestPredictableTurn {
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(50, kitty.getKitty());
 		turn.takeATurn();
+		assertEquals(46, kitty.getKitty());
 
 	}
 }
