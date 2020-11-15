@@ -7,7 +7,8 @@ import org.junit.jupiter.api.Test;
 class TestPredictableTurn {
 
 	@Test
-	void test() {
+	void test_predictable_turn_constructor() {
+		Turn turn = new Turn();
 		fail("Not yet implemented");
 	}
 
