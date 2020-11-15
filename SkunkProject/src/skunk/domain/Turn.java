@@ -1,6 +1,7 @@
 package skunk.domain;
 
 public class Turn {
+	private static final int DOUBLE_SKUNK_PENALTY = 4;
 	private Dice dice;
 	private Kitty kitty;
 	private Player player;
@@ -25,7 +26,7 @@ public class Turn {
 		this.dice.roll();
 		this.state = dice.getState();
 		if(this.state == DiceState.DOUBLE_SKUNK) {
-			this.kitty.setKitty(this.kitty.getKitty() + 4); 
+			this.kitty.setKitty(this.kitty.getKitty() + DOUBLE_SKUNK_PENALTY); 
 			this.player.setChips(this.player.getChips() - 4);
 			this.player.setGamePoints(0);
 			this.player.setTurnPoints(0);
