@@ -36,7 +36,6 @@ public class Turn {
 			this.kitty.setKitty(this.kitty.getKitty() + 1); 
 			this.player.setChips(this.player.getChips() - 1);
 		}
-
 	}
 
 }
