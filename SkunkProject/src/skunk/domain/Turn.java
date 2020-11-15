@@ -4,6 +4,7 @@ public class Turn {
 	private Dice dice;
 	private Kitty kitty;
 	private Player player;
+	private DiceState state;
 
 	public Turn(Dice dice, Kitty kitty, Player player) {
 		this.setDice(dice);
@@ -12,7 +13,8 @@ public class Turn {
 	}
 
 	public DiceState getState() {
-		return dice.getState();
+		this.state = dice.getState();
+		return this.state;
 	}
 
 	public void setDice(Dice dice) {

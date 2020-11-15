@@ -27,6 +27,6 @@ class TestPredictableTurn {
 		Player player = new Player();
 
 		Turn turn = new Turn(dice, kitty, player);
-		assertEquals(DiceState.SKUNK, turn.getState());
+		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
 	}
 }
