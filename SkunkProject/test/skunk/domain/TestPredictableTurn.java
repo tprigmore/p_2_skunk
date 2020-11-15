@@ -114,6 +114,11 @@ class TestPredictableTurn {
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(7, turn.takeATurn());
-	}
+		assertEquals(0, turn.takeATurn());
+		assertEquals(6, turn.takeATurn());
+		assertEquals(0, turn.takeATurn());
+		assertEquals(5, turn.takeATurn());
+		assertEquals(0, turn.takeATurn());
+		}
 
 }
