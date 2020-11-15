@@ -1,4 +1,5 @@
 package skunk.domain;
+
 import edu.princeton.cs.introcs.StdOut;
 
 /**
@@ -15,7 +16,7 @@ public class Dice
 {
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
-	
+
 	private DiceState state;
 	private int lastRoll;
 	private Die die1;
@@ -57,24 +58,29 @@ public class Dice
 
 		die1.roll();
 		die2.roll();
-		int value1 = die1.getLastRoll() ;
-		int value2 = die2.getLastRoll() ;
+		int value1 = die1.getLastRoll();
+		int value2 = die2.getLastRoll();
 		this.lastRoll = value1 + value2;
-		if (this.lastRoll == 2) {
+		if (this.lastRoll == 2)
+		{
 			this.state = DiceState.DOUBLE_SKUNK;
 		}
-		else if (this.lastRoll == 3) {
+		else if (this.lastRoll == 3)
+		{
 			this.state = DiceState.SKUNK_DEUCE;
 		}
-		else if ((value1 == 1) || (value2 == 1)) {
+		else if ((value1 == 1) || (value2 == 1))
+		{
 			this.state = DiceState.SKUNK;
 		}
-		else {
+		else
+		{
 			this.state = DiceState.GOOD;
 		}
 	}
 
-	public DiceState getState() {
+	public DiceState getState()
+	{
 		return this.state;
 	}
 

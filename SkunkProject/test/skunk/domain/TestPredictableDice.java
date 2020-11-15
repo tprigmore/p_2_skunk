@@ -4,10 +4,12 @@ import static org.junit.jupiter.api.Assertions.*;
 
 import org.junit.jupiter.api.Test;
 
-class TestPredictableDice {
+class TestPredictableDice
+{
 
 	@Test
-	void test_predictable_dice_constructor() {
+	void test_predictable_dice_constructor()
+	{
 		Die die1 = new PredictableDie();
 		Die die2 = new PredictableDie();
 		Dice dice = new Dice(die1, die2);
@@ -16,9 +18,12 @@ class TestPredictableDice {
 	}
 
 	@Test
-	void test_predictable_dice_246() {
-		Die die1 = new PredictableDie(new int[] {1,2,3});
-		Die die2 = new PredictableDie(new int[] {1,2,3});
+	void test_predictable_dice_246()
+	{
+		Die die1 = new PredictableDie(new int[]
+		{ 1, 2, 3 });
+		Die die2 = new PredictableDie(new int[]
+		{ 1, 2, 3 });
 		Dice dice = new Dice(die1, die2);
 		dice.roll();
 		assertEquals(2, dice.getLastRoll());
@@ -27,11 +32,14 @@ class TestPredictableDice {
 		dice.roll();
 		assertEquals(6, dice.getLastRoll());
 	}
-	
+
 	@Test
-	void test_predictable_dice_state() {
-		Die die1 = new PredictableDie(new int[] {1,2,1,3});
-		Die die2 = new PredictableDie(new int[] {1,1,3,4});
+	void test_predictable_dice_state()
+	{
+		Die die1 = new PredictableDie(new int[]
+		{ 1, 2, 1, 3 });
+		Die die2 = new PredictableDie(new int[]
+		{ 1, 1, 3, 4 });
 		Dice dice = new Dice(die1, die2);
 		dice.roll();
 		assertEquals(DiceState.DOUBLE_SKUNK, dice.getState());
@@ -41,15 +49,18 @@ class TestPredictableDice {
 		assertEquals(DiceState.SKUNK, dice.getState());
 		dice.roll();
 		assertEquals(DiceState.GOOD, dice.getState());
-		}
-	
+	}
+
 	@Test
-	void test_predictable_dice_toString() {
-		Die die1 = new PredictableDie(new int[] {1,2,1,3});
-		Die die2 = new PredictableDie(new int[] {1,1,3,4});
+	void test_predictable_dice_toString()
+	{
+		Die die1 = new PredictableDie(new int[]
+		{ 1, 2, 1, 3 });
+		Die die2 = new PredictableDie(new int[]
+		{ 1, 1, 3, 4 });
 		Dice dice = new Dice(die1, die2);
 		dice.roll();
 		assertEquals("Dice with last roll: 2 => 1 + 1", dice.toString());
-		}
+	}
 
 }

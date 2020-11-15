@@ -1,18 +1,22 @@
 package skunk.domain;
 
-public class Kitty {
+public class Kitty
+{
 
 	private int chips;
-	
-	public Kitty() {
+
+	public Kitty()
+	{
 		setKitty(0);
 	}
-	
-	public void setKitty(int chips) {
+
+	public void setKitty(int chips)
+	{
 		this.chips = chips;
 	}
 
-	public int getKitty() {
+	public int getKitty()
+	{
 		return this.chips;
 	}
 

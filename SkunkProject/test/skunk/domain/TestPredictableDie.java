@@ -4,18 +4,21 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestPredictableDie {
-	
+public class TestPredictableDie
+{
+
 	@Test
 	public void test_predictable_die_constructor()
 	{
 		Die die = new PredictableDie();
 		assertEquals(1, die.getLastRoll());
 	}
-	
+
 	@Test
-	public void test_predictable_die_123() {
-		Die die = new PredictableDie(new int[] {1,2,3});
+	public void test_predictable_die_123()
+	{
+		Die die = new PredictableDie(new int[]
+		{ 1, 2, 3 });
 		die.roll();
 		assertEquals(1, die.getLastRoll());
 		die.roll();
@@ -25,8 +28,10 @@ public class TestPredictableDie {
 	}
 
 	@Test
-    public void test_predictable_die_more_than_once() {
-		Die die = new PredictableDie(new int[] {1});
+	public void test_predictable_die_more_than_once()
+	{
+		Die die = new PredictableDie(new int[]
+		{ 1 });
 		die.roll();
 		assertEquals(1, die.getLastRoll());
 		die.roll();
@@ -34,8 +39,10 @@ public class TestPredictableDie {
 	}
 
 	@Test(expected = ArrayIndexOutOfBoundsException.class)
-    public void test_predictable_die_empty_list() {
-		Die die = new PredictableDie(new int[] {});
+	public void test_predictable_die_empty_list()
+	{
+		Die die = new PredictableDie(new int[]
+		{});
 		die.roll();
 		assertEquals(1, die.getLastRoll());
 	}
