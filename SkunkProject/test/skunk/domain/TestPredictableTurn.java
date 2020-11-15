@@ -78,6 +78,8 @@ class TestPredictableTurn {
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(0, player.getGamePoints());
+		turn.takeATurn();
+		assertEquals(0, player.getGamePoints());
 	}
 	
 	@Test
@@ -101,7 +103,17 @@ class TestPredictableTurn {
 		assertEquals(5, player.getTurnPoints());
 		turn.takeATurn();
 		assertEquals(0, player.getGamePoints());
+	}
 
+	@Test
+	void test_predictable_turn_takeATurn_return_value() {
+		Die die1 = new PredictableDie(new int[] {4,1,2,1,3,1});
+		Die die2 = new PredictableDie(new int[] {3,1,4,3,2,2});
+		Dice dice = new Dice(die1, die2);
+		Kitty kitty = new Kitty();
+		Player player = new Player();
+		Turn turn = new Turn(dice, kitty, player);
+		assertEquals(0, turn.takeATurn());
 	}
 
 }

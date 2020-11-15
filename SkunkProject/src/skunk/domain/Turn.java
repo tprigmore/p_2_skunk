@@ -21,7 +21,7 @@ public class Turn {
 		this.dice = dice;
 	}
 
-	public void takeATurn() {
+	public int takeATurn() {
 		this.dice.roll();
 		this.state = dice.getState();
 		if(this.state == DiceState.DOUBLE_SKUNK) {
@@ -43,6 +43,7 @@ public class Turn {
 		else {
 			this.player.setTurnPoints(this.player.getTurnPoints() +  dice.getLastRoll());
 		}
+		return this.player.getTurnPoints();
 	}
 
 }
