@@ -61,16 +61,16 @@ public class Dice
 		int value2 = die2.getLastRoll() ;
 		this.lastRoll = value1 + value2;
 		if (this.lastRoll == 2) {
-			state = DiceState.DOUBLE_SKUNK;
+			this.state = DiceState.DOUBLE_SKUNK;
 		}
 		else if (this.lastRoll == 3) {
-			state = DiceState.SKUNK_DEUCE;
+			this.state = DiceState.SKUNK_DEUCE;
 		}
 		else if ((value1 == 1) || (value2 == 1)) {
-			state = DiceState.SKUNK;
+			this.state = DiceState.SKUNK;
 		}
 		else {
-			state = DiceState.GOOD;
+			this.state = DiceState.GOOD;
 		}
 	}
 
