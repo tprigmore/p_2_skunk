@@ -31,6 +31,10 @@ class TestPredictableTurn {
 		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
 		turn.takeATurn();
 		assertEquals(DiceState.SKUNK_DEUCE, turn.getState());
+		turn.takeATurn();
+		assertEquals(DiceState.SKUNK, turn.getState());
+		turn.takeATurn();
+		assertEquals(DiceState.GOOD, turn.getState());
 
 	}
 }
