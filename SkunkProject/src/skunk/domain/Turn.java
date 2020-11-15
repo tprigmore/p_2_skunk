@@ -28,14 +28,17 @@ public class Turn {
 			this.kitty.setKitty(this.kitty.getKitty() + 4); 
 			this.player.setChips(this.player.getChips() - 4);
 			this.player.setGamePoints(0);
+			this.player.setTurnPoints(0);
 		}
 		else if (this.state == DiceState.SKUNK_DEUCE) {
 			this.kitty.setKitty(this.kitty.getKitty() + 2); 
 			this.player.setChips(this.player.getChips() - 2);
+			this.player.setTurnPoints(0);
 		}
 		else if (this.state == DiceState.SKUNK) {
 			this.kitty.setKitty(this.kitty.getKitty() + 1); 
 			this.player.setChips(this.player.getChips() - 1);
+			this.player.setTurnPoints(0);
 		}
 		else {
 			this.player.setTurnPoints(this.player.getTurnPoints() +  dice.getLastRoll());
