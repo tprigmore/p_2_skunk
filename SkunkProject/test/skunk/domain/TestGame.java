@@ -14,5 +14,13 @@ class TestGame
 		
 		assertEquals(GameState.IDLE, game.getState());
 	}
-
+	
+	@Test
+	void test_game_adding_players()
+	{
+		Game game = new Game();
+		game.addPlayer("Scott");
+		
+		assertEquals("Scotty", game.getPlayerName());
+	}
 }

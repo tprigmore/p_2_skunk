@@ -2,12 +2,14 @@ package skunk.domain;
 
 public class Player
 {
+	private String name;
 	private int chips;
 	private int gamePoints;
 	private int turnPoints;
 
-	public Player()
+	public Player(String name)
 	{
+		this.setName(name);
 		this.setChips(50);
 		this.setGamePoints(0);
 		this.setTurnPoints(0);
@@ -41,6 +43,16 @@ public class Player
 	public Integer getTurnPoints()
 	{
 		return this.turnPoints;
+	}
+
+	public String getName()
+	{
+		return name;
+	}
+
+	public void setName(String name)
+	{
+		this.name = name;
 	}
 
 }

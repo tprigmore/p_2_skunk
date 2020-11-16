@@ -2,5 +2,5 @@ package skunk.domain;
 
 public enum GameState
 {
-	IDLE, PLAYING
+	IDLE, ROUND_ACTIVE, FINAL_ROUND, GAME_OVER
 }
