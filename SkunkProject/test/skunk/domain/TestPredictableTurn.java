@@ -10,11 +10,9 @@ class TestPredictableTurn
 	@Test
 	void test_predictable_turn_constructor()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 1, 2, 1, 3 });
-		Die die2 = new PredictableDie(new int[]
-		{ 1, 1, 3, 4 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 1, 3 });
+		Die die2 = new PredictableDie(new int[]{ 1, 1, 3, 4 });
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
@@ -24,15 +22,12 @@ class TestPredictableTurn
 	@Test
 	void test_predictable_turn_state()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 1, 2, 1, 3 });
-		Die die2 = new PredictableDie(new int[]
-		{ 1, 1, 3, 4 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 1, 3 });
+		Die die2 = new PredictableDie(new int[]{ 1, 1, 3, 4 });
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
-		turn.takeATurn();
 		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
 		turn.takeATurn();
 		assertEquals(DiceState.SKUNK_DEUCE, turn.getState());
@@ -45,19 +40,19 @@ class TestPredictableTurn
 	@Test
 	void test_predictable_turn_kitty()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 1, 2, 1, 3 });
-		Die die2 = new PredictableDie(new int[]
-		{ 1, 1, 3, 4 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 1, 3, 1});
+		Die die2 = new PredictableDie(new int[]{ 1, 1, 3, 4, 1});
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(0, kitty.getKitty());
 		turn.takeATurn();
-		assertEquals(4, kitty.getKitty());
+		assertEquals(2, kitty.getKitty());
 		turn.takeATurn();
-		assertEquals(6, kitty.getKitty());
+		assertEquals(3, kitty.getKitty());
+		turn.takeATurn();
+		assertEquals(3, kitty.getKitty());
 		turn.takeATurn();
 		assertEquals(7, kitty.getKitty());
 	}
@@ -65,31 +60,27 @@ class TestPredictableTurn
 	@Test
 	void test_predictable_turn_player_chips()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 1, 2, 1, 3 });
-		Die die2 = new PredictableDie(new int[]
-		{ 1, 1, 3, 4 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 1, 3, 1});
+		Die die2 = new PredictableDie(new int[]{ 1, 1, 3, 4, 1});
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(50, player.getChips());
 		turn.takeATurn();
-		assertEquals(46, player.getChips());
+		assertEquals(48, player.getChips());
 		turn.takeATurn();
-		assertEquals(44, player.getChips());
+		assertEquals(47, player.getChips());
 		turn.takeATurn();
-		assertEquals(43, player.getChips());
+		assertEquals(47, player.getChips());
 	}
 
 	@Test
 	void test_predictable_turn_player_game_points()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 4, 1, 2, 1, 3 });
-		Die die2 = new PredictableDie(new int[]
-		{ 3, 1, 1, 3, 4 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 4, 1, 2, 1, 3 });
+		Die die2 = new PredictableDie(new int[]{ 3, 1, 1, 3, 4 });
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
@@ -101,45 +92,41 @@ class TestPredictableTurn
 	@Test
 	void test_predictable_turn_player_turn_points()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 4, 1, 2, 1, 3, 1 });
-		Die die2 = new PredictableDie(new int[]
-		{ 3, 1, 4, 3, 2, 2 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 4, 1, 2, 1, 3, 1 });
+		Die die2 = new PredictableDie(new int[]{ 3, 1, 4, 3, 2, 2 });
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
 		assertEquals(0, player.getTurnPoints());
 		turn.takeATurn();
-		assertEquals(7, player.getTurnPoints());
-		turn.takeATurn();
-		assertEquals(0, player.getGamePoints());
+		assertEquals(0, player.getTurnPoints());
 		turn.takeATurn();
 		assertEquals(6, player.getTurnPoints());
 		turn.takeATurn();
-		assertEquals(0, player.getGamePoints());
+		assertEquals(0, player.getTurnPoints());
 		turn.takeATurn();
 		assertEquals(5, player.getTurnPoints());
 		turn.takeATurn();
-		assertEquals(0, player.getGamePoints());
+		assertEquals(0, player.getTurnPoints());
+		turn.takeATurn();
+		assertEquals(7, player.getTurnPoints());
 	}
 
 	@Test
 	void test_predictable_turn_takeATurn_return_value()
 	{
-		Die die1 = new PredictableDie(new int[]
-		{ 4, 1, 2, 1, 3, 1 });
-		Die die2 = new PredictableDie(new int[]
-		{ 3, 1, 4, 3, 2, 2 });
-		Dice dice = new Dice(die1, die2);
+		Die die1 = new PredictableDie(new int[]{ 4, 1, 2, 1, 3, 1, 4 });
+		Die die2 = new PredictableDie(new int[]{ 3, 1, 4, 3, 2, 2, 4 });
+		Dice dice = Dice.getInstance(die1, die2);
 		Kitty kitty = new Kitty();
 		Player player = new Player();
 		Turn turn = new Turn(dice, kitty, player);
-		assertEquals(7, turn.takeATurn());
 		assertEquals(0, turn.takeATurn());
 		assertEquals(6, turn.takeATurn());
 		assertEquals(0, turn.takeATurn());
 		assertEquals(5, turn.takeATurn());
 		assertEquals(0, turn.takeATurn());
+		assertEquals(8, turn.takeATurn());
 	}
 }

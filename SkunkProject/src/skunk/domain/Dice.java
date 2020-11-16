@@ -3,12 +3,15 @@ package skunk.domain;
 import edu.princeton.cs.introcs.StdOut;
 
 /**
- * Dice represents a single pair of rollable Die objects, randomly generating
- * sums of their two values
+ * Dice represents a single pair of rollable Die objects.  Dice can
+ * represent real dice randomly generating sums of their two values.  
+ * Or use predictable die behavior.
+ * 
+ * This creates a singleton pattern.
  * 
  * This is a Javadoc comment: add more to your finished class below
  * 
- * @author eric
+ * @author scott
  *
  */
 
@@ -17,6 +20,7 @@ public class Dice
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
 
+	private static Dice dice = new Dice() ;
 	private DiceState state;
 	private int lastRoll;
 	private Die die1;
@@ -25,22 +29,17 @@ public class Dice
 	// Constructors (object initializers) also can be declared anywhere
 	// Convention: after instance fields/variables
 
-	public Dice()
+	private Dice()
 	{
-		// initialize instance variables die1 and die2 by
-		// creating a new instance of each
-
-		this.die1 = new DieReal();
-		this.die2 = new DieReal();
-		this.roll();
 	}
 
-	public Dice(Die die1, Die die2) // overloaded constructor
+	public static Dice getInstance(Die die1, Die die2) // overloaded constructor
 	{
-		this.die1 = die1;
-		this.die2 = die2;
-		this.lastRoll = 2;
-		this.state = DiceState.DOUBLE_SKUNK;
+		// initialize instance variables die1 and die2 
+		dice.die1 = die1;
+		dice.die2 = die2;
+		dice.roll();
+		return dice;
 	}
 
 	// Instance methods can also be declared anywhere in body of class
