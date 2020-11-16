@@ -13,7 +13,17 @@ public class Game
 	{
 		setState(GameState.IDLE);
 		this.playerCount = 0;
-		this.playerIndex = 0;
+		this.setPlayerIndex(0);
+	}
+
+	public void setPlayerIndex(int index)
+	{
+		this.playerIndex = index;
+	}
+
+	public int getPlayerIndex()
+	{
+		return this.playerIndex ;
 	}
 
 	public GameState getState()
