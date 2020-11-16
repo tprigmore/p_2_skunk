@@ -39,7 +39,7 @@ class TestGame
 	void test_game_player_count()
 	{
 		Game game = new Game();
-		assertEquals(1,game.getPlayerCount());
+		assertEquals(0,game.getPlayerCount());
 //		game.addPlayer("Scott");
 //		assertEquals("Scott", game.getPlayerName());
 //		assertEquals(0, game.getPlayerIndex());
