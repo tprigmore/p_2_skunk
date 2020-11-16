@@ -40,19 +40,11 @@ class TestGame
 	{
 		Game game = new Game();
 		assertEquals(0,game.getPlayerCount());
-//		game.addPlayer("Scott");
-//		assertEquals("Scott", game.getPlayerName());
-//		assertEquals(0, game.getPlayerIndex());
-//		game.addPlayer("Kathy");
-//		game.setPlayerIndex(1);
-//		assertEquals(1, game.getPlayerIndex());
-//		assertEquals("Kathy", game.getPlayerName());
-//		game.addPlayer("Joe");
-//		game.setPlayerIndex(2);
-//		assertEquals(2, game.getPlayerIndex());
-//		assertEquals("Joe", game.getPlayerName());
-//		game.setPlayerIndex(0);
-//		assertEquals(0, game.getPlayerIndex());
-//		assertEquals("Scott", game.getPlayerName());
+		game.addPlayer("Scott");
+		assertEquals(1,game.getPlayerCount());
+		game.addPlayer("Kathy");
+		assertEquals(2,game.getPlayerCount());
+		game.addPlayer("Joe");
+		assertEquals(3,game.getPlayerCount());
 	}
 }
