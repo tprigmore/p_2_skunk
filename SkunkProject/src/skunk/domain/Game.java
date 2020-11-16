@@ -50,4 +50,9 @@ public class Game
 		return player.getName();
 	}
 
+	public int getPlayerCount()
+	{
+		return this.playerCount;
+	}
+
 }
