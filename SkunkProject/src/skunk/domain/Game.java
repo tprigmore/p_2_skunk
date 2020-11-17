@@ -72,4 +72,10 @@ public class Game
 		this.turn = new Turn(this.playerArray.get(playerIndex));
 		return (turn.takeATurn());
 	}
+
+	public boolean goToNextPlayer()
+	{
+		this.playerIndex++;
+		return true ;
+	}
 }

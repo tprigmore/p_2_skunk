@@ -73,4 +73,22 @@ class TestGame
 		assertEquals(10, game.takeATurn());
 		assertEquals(0, game.takeATurn());
 	}
+	
+	@Test
+	void test_game_go_to_next_player()
+	{
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 1, 2 });
+		Die die2 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 4, 1 });
+		Dice dice = Dice.getInstance();
+		dice.setupDie(die1, die2);
+		Game game = new Game();
+		game.addPlayer("Scott");
+		game.addPlayer("Joe");
+		game.addPlayer("Pete");
+		assertEquals(4, game.takeATurn());
+		assertEquals(10, game.takeATurn());
+		game.goToNextPlayer();
+		assertEquals(4, game.takeATurn());
+		assertEquals(10, game.takeATurn());
+	}
 }
