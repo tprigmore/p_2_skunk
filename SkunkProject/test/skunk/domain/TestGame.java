@@ -118,8 +118,10 @@ class TestGame
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
 		assertEquals(10, game.getPlayerGamePoints());
+		assertEquals(50,game.getPlayerChips());
 		
 		game.goToNextPlayer();
+		assertEquals(50,game.getPlayerChips());
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		assertEquals(8, game.takeATurn());
@@ -128,8 +130,10 @@ class TestGame
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
 		assertEquals(18, game.getPlayerGamePoints());
+		assertEquals(50,game.getPlayerChips());
 
 		game.goToNextPlayer();
+		assertEquals(50,game.getPlayerChips());
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		assertEquals(12, game.takeATurn());
@@ -138,6 +142,7 @@ class TestGame
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
 		assertEquals(0, game.getPlayerGamePoints());
+		assertEquals(49,game.getPlayerChips());
 
 		game.goToNextPlayer();
 		assertEquals(0, game.getPlayerTurnPoints());
@@ -147,6 +152,7 @@ class TestGame
 		assertEquals(10, game.getPlayerGamePoints());
 		game.addScorePoints();
 		assertEquals(10, game.getPlayerGamePoints());
+		assertEquals(48,game.getPlayerChips());
 		
 		game.goToNextPlayer();
 		assertEquals(0, game.getPlayerTurnPoints());
@@ -156,5 +162,6 @@ class TestGame
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
 		assertEquals(0, game.getPlayerGamePoints());
+		assertEquals(46,game.getPlayerChips());
 	}
 }
