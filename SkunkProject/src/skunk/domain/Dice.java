@@ -33,13 +33,17 @@ public class Dice
 	{
 	}
 
-	public static Dice getInstance(Die die1, Die die2) // overloaded constructor
+	public static Dice getInstance()
+	{
+		return dice;
+	}
+
+	public void setupDie(Die die1, Die die2) 
 	{
 		// initialize instance variables die1 and die2 
 		dice.die1 = die1;
 		dice.die2 = die2;
 		dice.roll();
-		return dice;
 	}
 
 	// Instance methods can also be declared anywhere in body of class

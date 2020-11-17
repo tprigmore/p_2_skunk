@@ -9,6 +9,7 @@ public class Game
 	private int playerCount;
 	private int playerIndex;
 	private Kitty kitty = Kitty.getInstance();
+	private Turn turn;
 
 	public Game()
 	{
@@ -64,5 +65,11 @@ public class Game
 	public int getKitty()
 	{
 		return this.kitty.getKitty();
+	}
+
+	public int takeATurn()
+	{
+		this.turn = new Turn(this.playerArray.get(playerIndex));
+		return (turn.takeATurn());
 	}
 }

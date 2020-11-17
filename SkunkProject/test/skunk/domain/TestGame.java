@@ -59,4 +59,16 @@ class TestGame
 		game.setKitty(10);
 		assertEquals(10, game.getKitty());
 	}
+	
+	@Test
+	void test_game_take_a_turn()
+	{
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 3 });
+		Die die2 = new PredictableDie(new int[]{ 1, 2, 3 });
+		Dice dice = Dice.getInstance();
+		dice.setupDie(die1, die2);
+		Game game = new Game();
+		game.addPlayer("Scott");
+		assertEquals(1, game.takeATurn());
+	}
 }

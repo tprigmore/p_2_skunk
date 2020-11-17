@@ -11,10 +11,10 @@ public class Turn
 	private Player player;
 	private DiceState state;
 
-	public Turn(Dice dice, Kitty kitty, Player player)
+	public Turn(Player player)
 	{
-		this.setDice(dice);
-		this.kitty = kitty;
+		this.dice = Dice.getInstance();
+		this.kitty = Kitty.getInstance();
 		this.player = player;
 	}
 
