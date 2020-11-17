@@ -94,5 +94,8 @@ class TestGame
 		assertEquals(12, game.takeATurn());
 		assertEquals(0, game.takeATurn());
 		game.goToNextPlayer();
+		assertEquals(0, game.takeATurn());
+		game.goToNextPlayer();
+		assertEquals(0, game.takeATurn());
 	}
 }

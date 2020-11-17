@@ -73,9 +73,16 @@ public class Game
 		return (turn.takeATurn());
 	}
 
-	public boolean goToNextPlayer()
+	public GameState goToNextPlayer()
 	{
-		this.playerIndex++;
-		return true ;
+		if(this.playerIndex == (playerCount - 1)) {
+			this.playerIndex = 0;
+			this.state = GameState.ROUND_END;
+		}
+		else {
+			this.playerIndex++;
+			this.state = GameState.ROUND_ACTIVE;
+		}
+		return this.state ;
 	}
 }
