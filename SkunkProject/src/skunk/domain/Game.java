@@ -85,4 +85,17 @@ public class Game
 		}
 		return this.state ;
 	}
+
+	public void addScorePoints()
+	{
+		Player activePlayer = this.playerArray.get(playerIndex);
+		activePlayer.setGamePoints(activePlayer.getGamePoints() + activePlayer.getTurnPoints());
+		activePlayer.setTurnPoints(0);
+	}
+
+	public int getPlayerTurnPoints()
+	{
+		Player activePlayer = this.playerArray.get(playerIndex);
+		return activePlayer.getTurnPoints();
+	}
 }

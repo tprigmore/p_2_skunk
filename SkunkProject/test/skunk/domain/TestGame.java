@@ -98,4 +98,29 @@ class TestGame
 		game.goToNextPlayer();
 		assertEquals(0, game.takeATurn());
 	}
+	
+	@Test
+	void test_game_add_turn_points_to_game_points()
+	{
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 1, 2 });
+		Die die2 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 4, 1 });
+		Dice dice = Dice.getInstance();
+		dice.setupDie(die1, die2);
+		Game game = new Game();
+		game.addPlayer("Scott");
+		game.addPlayer("Joe");
+		game.addPlayer("Pete");
+		assertEquals(10, game.getPlayerTurnPoints());
+		game.addScorePoints();
+		game.goToNextPlayer();
+		assertEquals(8, game.takeATurn());
+		assertEquals(18, game.takeATurn());
+		game.goToNextPlayer();
+		assertEquals(12, game.takeATurn());
+		assertEquals(0, game.takeATurn());
+		game.goToNextPlayer();
+		assertEquals(0, game.takeATurn());
+		game.goToNextPlayer();
+		assertEquals(0, game.takeATurn());
+	}
 }
