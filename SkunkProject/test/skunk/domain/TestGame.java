@@ -111,7 +111,7 @@ class TestGame
 		game.addPlayer("Joe");
 		game.addPlayer("Pete");
 		assertEquals(0, game.getPlayerTurnPoints());
-		assertEquals(5,game.getPlayerChips());
+		assertEquals(50,game.getPlayerChips());
 		assertEquals(4, game.takeATurn());
 		assertEquals(10, game.takeATurn());
 		assertEquals(10, game.getPlayerTurnPoints());
