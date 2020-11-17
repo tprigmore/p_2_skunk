@@ -104,4 +104,10 @@ public class Game
 		Player activePlayer = this.playerArray.get(playerIndex);
 		return activePlayer.getGamePoints();
 	}
+
+	public int getPlayerChips()
+	{
+		Player activePlayer = this.playerArray.get(playerIndex);
+		return activePlayer.getChips();
+	}
 }

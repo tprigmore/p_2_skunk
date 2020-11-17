@@ -100,7 +100,7 @@ class TestGame
 	}
 	
 	@Test
-	void test_game_add_turn_points_to_game_points()
+	void test_game_test_scoring()
 	{
 		Die die1 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 1, 2 });
 		Die die2 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 4, 1 });
@@ -111,21 +111,50 @@ class TestGame
 		game.addPlayer("Joe");
 		game.addPlayer("Pete");
 		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(5,game.getPlayerChips());
 		assertEquals(4, game.takeATurn());
 		assertEquals(10, game.takeATurn());
 		assertEquals(10, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
 		assertEquals(10, game.getPlayerGamePoints());
+		
 		game.goToNextPlayer();
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
 		assertEquals(8, game.takeATurn());
 		assertEquals(18, game.takeATurn());
+		assertEquals(18, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
+		game.addScorePoints();
+		assertEquals(18, game.getPlayerGamePoints());
+
 		game.goToNextPlayer();
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
 		assertEquals(12, game.takeATurn());
 		assertEquals(0, game.takeATurn());
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
+		game.addScorePoints();
+		assertEquals(0, game.getPlayerGamePoints());
+
 		game.goToNextPlayer();
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(10, game.getPlayerGamePoints());
 		assertEquals(0, game.takeATurn());
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(10, game.getPlayerGamePoints());
+		game.addScorePoints();
+		assertEquals(10, game.getPlayerGamePoints());
+		
 		game.goToNextPlayer();
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(18, game.getPlayerGamePoints());
 		assertEquals(0, game.takeATurn());
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
+		game.addScorePoints();
+		assertEquals(0, game.getPlayerGamePoints());
 	}
 }
