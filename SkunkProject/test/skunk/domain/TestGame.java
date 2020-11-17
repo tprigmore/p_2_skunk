@@ -11,10 +11,9 @@ class TestGame
 	void test_game_constructor()
 	{
 		Game game = new Game();
-		
 		assertEquals(GameState.IDLE, game.getState());
 	}
-	
+
 	@Test
 	void test_game_adding_players()
 	{
@@ -34,17 +33,25 @@ class TestGame
 		assertEquals(0, game.getPlayerIndex());
 		assertEquals("Scott", game.getPlayerName());
 	}
-	
+
 	@Test
 	void test_game_player_count()
 	{
 		Game game = new Game();
-		assertEquals(0,game.getPlayerCount());
+		assertEquals(0, game.getPlayerCount());
 		game.addPlayer("Scott");
-		assertEquals(1,game.getPlayerCount());
+		assertEquals(1, game.getPlayerCount());
 		game.addPlayer("Kathy");
-		assertEquals(2,game.getPlayerCount());
+		assertEquals(2, game.getPlayerCount());
 		game.addPlayer("Joe");
-		assertEquals(3,game.getPlayerCount());
+		assertEquals(3, game.getPlayerCount());
+	}
+	
+	@Test
+	void test_game_kitty()
+	{
+		Game game = new Game();
+		game.setKitty(20);
+		assertEquals(10, game.getKitty());
 	}
 }

@@ -8,6 +8,7 @@ public class Game
 	private ArrayList<Player> playerArray = new ArrayList<Player>();
 	private int playerCount;
 	private int playerIndex;
+	private Kitty kitty = new Kitty();
 
 	public Game()
 	{
@@ -55,4 +56,13 @@ public class Game
 		return this.playerCount;
 	}
 
+	public void setKitty(int chips)
+	{
+		this.kitty.setKitty(chips);
+	}
+	
+	public int getKitty()
+	{
+		return this.kitty.getKitty();
+	}
 }
