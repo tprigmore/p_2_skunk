@@ -53,5 +53,25 @@ class TestPredictableDice
 		Dice dice = Dice.getInstance(die1, die2);
 		assertEquals("Dice with last roll: 2 => 1 + 1", dice.toString());
 	}
+	
+	@Test
+	void test_predictable_dice_singleton()
+	{
+		Die die1 = new PredictableDie(new int[]{ 1, 2, 1, 3 });
+		Die die2 = new PredictableDie(new int[]{ 1, 1, 3, 4 });
+		Dice dice1 = Dice.getInstance(die1, die2);
+		Dice dice2 = Dice.getInstance(die1, die2);
+		assertEquals(3, dice1.getLastRoll());
+		assertEquals(3, dice2.getLastRoll());
+		dice1.roll();
+		assertEquals(4, dice1.getLastRoll());
+		assertEquals(4, dice2.getLastRoll());
+		dice2.roll();
+		assertEquals(7, dice1.getLastRoll());
+		assertEquals(7, dice2.getLastRoll());
+		dice2.roll();
+		assertEquals(2, dice1.getLastRoll());
+		assertEquals(2, dice2.getLastRoll());
 
+	}
 }
