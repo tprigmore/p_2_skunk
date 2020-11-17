@@ -88,7 +88,11 @@ class TestGame
 		assertEquals(4, game.takeATurn());
 		assertEquals(10, game.takeATurn());
 		game.goToNextPlayer();
-		assertEquals(4, game.takeATurn());
-		assertEquals(10, game.takeATurn());
+		assertEquals(8, game.takeATurn());
+		assertEquals(18, game.takeATurn());
+		game.goToNextPlayer();
+		assertEquals(12, game.takeATurn());
+		assertEquals(0, game.takeATurn());
+		game.goToNextPlayer();
 	}
 }
