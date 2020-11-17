@@ -2,12 +2,17 @@ package skunk.domain;
 
 public class Kitty
 {
-
+	private static Kitty kitty = new Kitty() ;
 	private int chips;
 
-	public Kitty()
+	private Kitty()
 	{
-		setKitty(0);
+	}
+	
+	public static Kitty getInstance() // overloaded constructor
+	{
+		kitty.setKitty(0);
+		return kitty;
 	}
 
 	public void setKitty(int chips)

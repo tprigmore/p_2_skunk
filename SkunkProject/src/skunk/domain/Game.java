@@ -8,7 +8,7 @@ public class Game
 	private ArrayList<Player> playerArray = new ArrayList<Player>();
 	private int playerCount;
 	private int playerIndex;
-	private Kitty kitty = new Kitty();
+	private Kitty kitty = Kitty.getInstance();;
 
 	public Game()
 	{
