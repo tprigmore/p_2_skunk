@@ -110,8 +110,13 @@ class TestGame
 		game.addPlayer("Scott");
 		game.addPlayer("Joe");
 		game.addPlayer("Pete");
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(4, game.takeATurn());
+		assertEquals(10, game.takeATurn());
 		assertEquals(10, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
+		assertEquals(10, game.getPlayerGamePoints());
 		game.goToNextPlayer();
 		assertEquals(8, game.takeATurn());
 		assertEquals(18, game.takeATurn());

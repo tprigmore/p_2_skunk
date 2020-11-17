@@ -98,4 +98,10 @@ public class Game
 		Player activePlayer = this.playerArray.get(playerIndex);
 		return activePlayer.getTurnPoints();
 	}
+
+	public int getPlayerGamePoints()
+	{
+		Player activePlayer = this.playerArray.get(playerIndex);
+		return activePlayer.getGamePoints();
+	}
 }
