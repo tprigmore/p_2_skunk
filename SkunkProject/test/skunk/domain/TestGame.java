@@ -69,6 +69,8 @@ class TestGame
 		dice.setupDie(die1, die2);
 		Game game = new Game();
 		game.addPlayer("Scott");
-		assertEquals(1, game.takeATurn());
+		assertEquals(4, game.takeATurn());
+		assertEquals(10, game.takeATurn());
+		assertEquals(0, game.takeATurn());
 	}
 }
