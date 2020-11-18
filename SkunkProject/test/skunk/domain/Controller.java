@@ -4,7 +4,8 @@ public class Controller
 {
 	private ControllerState state;
 
-	public Controller() {
+	public Controller()
+	{
 		this.state = ControllerState.START_GAME;
 	}
 
@@ -15,14 +16,20 @@ public class Controller
 
 	public String getMessage(ControllerState state)
 	{
-		String returnString ;
-		
-		switch (state) {
-        case START_GAME:  returnString = "Do you want to play skunk? (y/n) ";
-                 break;
-        default: returnString = "Error state";
-                 break;
-    }
+		String returnString;
+
+		switch (state)
+		{
+		case START_GAME:
+			returnString = "Do you want to play skunk? (y/n) ";
+			break;
+		case RULES:
+			returnString = "Do you want to see the rules? (y/n) ";
+			break;
+		default:
+			returnString = "No message";
+			break;
+		}
 		return returnString;
 	}
 
