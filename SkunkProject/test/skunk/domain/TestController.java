@@ -10,7 +10,8 @@ class TestController
 	@Test
 	void test_controller_constructor()
 	{
-		fail("Not yet implemented");
+		Controller controller = new Controller();
+		assertEquals(ControllerState.SETUP, controller.getState());
 	}
 
 }
