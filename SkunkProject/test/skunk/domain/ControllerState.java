@@ -2,5 +2,5 @@ package skunk.domain;
 
 public enum ControllerState
 {
-SETUP, PLAY_ROUND
+START_GAME, SETUP, PLAY_ROUND
 }

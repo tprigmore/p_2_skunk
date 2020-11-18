@@ -11,7 +11,14 @@ class TestController
 	void test_controller_constructor()
 	{
 		Controller controller = new Controller();
-		assertEquals(ControllerState.SETUP, controller.getState());
+		assertEquals(ControllerState.START_GAME, controller.getState());
+	}
+	
+	@Test
+	void test_controller_getMessage()
+	{
+		Controller controller = new Controller();
+		assertEquals("Do you want to play skunk? (y/n) ", controller.getMessage(ControllerState.START_GAME));
 	}
 
 }
