@@ -15,7 +15,7 @@ public class Controller
 
 	public String getMessage(ControllerState state)
 	{
-		String returnString;
+		String returnString ;
 		
 		switch (state) {
         case START_GAME:  returnString = "Do you want to play skunk? (y/n) ";
@@ -23,7 +23,7 @@ public class Controller
         default: returnString = "Error state";
                  break;
     }
-		return null;
+		return returnString;
 	}
 
 }
