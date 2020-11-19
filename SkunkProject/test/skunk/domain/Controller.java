@@ -64,12 +64,25 @@ public class Controller
 				state = ControllerState.ADD_PLAYER;
 			}
 			break;
-//		case RULES:
-//			returnString = "Do you want to see the rules? (y/n) ";
-//			break;
-//		case ADD_PLAYER:
-//			returnString = "Enter player's name: ";
-//			break;
+		case DISPLAY_RULES:
+			if (response.toLowerCase().charAt(0) == 'y') {
+				state = ControllerState.ADD_PLAYER;
+			}
+			else {
+				state = ControllerState.ADD_PLAYER;
+			}
+			break;
+		case ADD_PLAYER:
+			game.addPlayer(response);
+			state = ControllerState.ADD_ANOTHER_PLAYER;
+			break;
+		case ADD_ANOTHER_PLAYER:
+			if (response.toLowerCase().charAt(0) == 'y') {
+				state = ControllerState.ADD_PLAYER;
+			}
+			else {
+				state = ControllerState.PLAY_ROUND;
+			}
 //		case ADD_ANOTHER_PLAYER:
 //			returnString = "Add another player? (y/n) ";
 //			break;
