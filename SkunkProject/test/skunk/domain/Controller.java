@@ -11,7 +11,7 @@ public class Controller
 		this.game = new Game();
 	}
 
-	public Object getState()
+	public ControllerState getState()
 	{
 		return this.state;
 	}
@@ -41,13 +41,18 @@ public class Controller
 		return returnString;
 	}
 	
-//	public void setResponce(String responce)
-//	{
-//		switch (state)
-//		{
-//		case START_GAME:
-//			returnString = "Do you want to play skunk? (y/n) ";
-//			break;
+	public void setResponse(String response)
+	{
+		switch (state)
+		{
+		case START_GAME:
+			if (response.toLowerCase().charAt(0) == 'y') {
+				state = ControllerState.RULES;
+			}
+			else {
+				state = ControllerState.DONE;
+			}
+			break;
 //		case RULES:
 //			returnString = "Do you want to see the rules? (y/n) ";
 //			break;
@@ -57,11 +62,9 @@ public class Controller
 //		case ADD_ANOTHER_PLAYER:
 //			returnString = "Add another player? (y/n) ";
 //			break;
-//		default:
-//			returnString = "No message";
-//			break;
-//		}
-//		return returnString;
-//	}
+		default:
+			break;
+		}
+	}
 
 }
