@@ -45,7 +45,7 @@ public class Game
 		this.playerCount++;
 	}
 
-	public Object getPlayerName()
+	public String getPlayerName()
 	{
 		Player player;
 		player = this.playerArray.get(this.playerIndex);

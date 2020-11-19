@@ -8,7 +8,7 @@ public class Controller
 	public Controller()
 	{
 		this.state = ControllerState.START_GAME;
-		this.game = new Game();
+		this.setGame(new Game());
 	}
 
 	public ControllerState getState()
@@ -37,6 +37,15 @@ public class Controller
 		case ADD_ANOTHER_PLAYER:
 			returnString = "Add another player? (y/n) ";
 			break;
+		case PLAY_ROUND:
+			returnString = "------------ Next Round ---------------------------\n" +
+				getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
+			break;
+		case TAKE_A_TURN:
+			returnString = "------------ Next Round ---------------------------\n" +
+				getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
+			break;
+
 		default:
 			returnString = "No message";
 			break;
@@ -73,7 +82,7 @@ public class Controller
 			}
 			break;
 		case ADD_PLAYER:
-			game.addPlayer(response);
+			getGame().addPlayer(response);
 			state = ControllerState.ADD_ANOTHER_PLAYER;
 			break;
 		case ADD_ANOTHER_PLAYER:
@@ -83,12 +92,29 @@ public class Controller
 			else {
 				state = ControllerState.PLAY_ROUND;
 			}
-//		case ADD_ANOTHER_PLAYER:
+		case PLAY_ROUND:
+			if (response.toLowerCase().charAt(0) == 'y') {
+				state = ControllerState.TAKE_A_TURN;
+			}
+			else {
+				state = ControllerState.NEXT_PLAYER;
+			}
+///		case ADD_ANOTHER_PLAYER:
 //			returnString = "Add another player? (y/n) ";
 //			break;
 		default:
 			break;
 		}
+	}
+
+	public Game getGame()
+	{
+		return game;
+	}
+
+	public void setGame(Game game)
+	{
+		this.game = game;
 	}
 
 }

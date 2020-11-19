@@ -39,7 +39,8 @@ class TestController
 		controller.setResponse("Scott");
 		assertEquals("Add another player? (y/n) ", controller.getMessage(controller.getState()));
 		controller.setResponse("n");
-		assertEquals("Add another player? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals("------------ Next Round ---------------------------\n" +
+				controller.getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 
 //		assertEquals("Enter player's name: ", controller.getMessage(ControllerState.ADD_PLAYER));
 //		assertEquals("Add another player? (y/n) ", controller.getMessage(ControllerState.ADD_ANOTHER_PLAYER));
