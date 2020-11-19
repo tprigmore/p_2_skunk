@@ -28,6 +28,9 @@ public class Controller
 		case RULES:
 			returnString = "Do you want to see the rules? (y/n) ";
 			break;
+		case DISPLAY_RULES:
+			returnString = "Short rules.\nDo you want to add a player? (y/n) ";
+			break;
 		case ADD_PLAYER:
 			returnString = "Enter player's name: ";
 			break;
@@ -51,6 +54,14 @@ public class Controller
 			}
 			else {
 				state = ControllerState.DONE;
+			}
+			break;
+		case RULES:
+			if (response.toLowerCase().charAt(0) == 'y') {
+				state = ControllerState.DISPLAY_RULES;
+			}
+			else {
+				state = ControllerState.ADD_PLAYER;
 			}
 			break;
 //		case RULES:
