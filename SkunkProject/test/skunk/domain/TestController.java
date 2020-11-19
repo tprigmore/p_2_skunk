@@ -38,7 +38,9 @@ class TestController
 		assertEquals("Enter player's name: ", controller.getMessage(controller.getState()));
 		controller.setResponse("Scott");
 		assertEquals("Add another player? (y/n) ", controller.getMessage(controller.getState()));
-		
+		controller.setResponse("n");
+		assertEquals("Add another player? (y/n) ", controller.getMessage(controller.getState()));
+
 //		assertEquals("Enter player's name: ", controller.getMessage(ControllerState.ADD_PLAYER));
 //		assertEquals("Add another player? (y/n) ", controller.getMessage(ControllerState.ADD_ANOTHER_PLAYER));
 //		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage(ControllerState.RULES));
