@@ -30,15 +30,21 @@ class TestController
 	{
 		Controller controller = new Controller();
 		assertEquals("Do you want to play skunk? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(ControllerState.START_GAME,controller.getState());
 		controller.setResponse("y");
 		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(ControllerState.RULES,controller.getState());
 		controller.setResponse("y");
 		assertEquals("Short rules.\nDo you want to add a player? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(ControllerState.DISPLAY_RULES,controller.getState());
 		controller.setResponse("y");
 		assertEquals("Enter player's name: ", controller.getMessage(controller.getState()));
+		assertEquals(ControllerState.ADD_PLAYER,controller.getState());
 		controller.setResponse("Scott");
 		assertEquals("Add another player? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(ControllerState.ADD_ANOTHER_PLAYER,controller.getState());
 		controller.setResponse("n");
+		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
 				controller.getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 

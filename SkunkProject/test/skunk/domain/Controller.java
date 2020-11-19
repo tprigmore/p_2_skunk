@@ -78,7 +78,7 @@ public class Controller
 				state = ControllerState.ADD_PLAYER;
 			}
 			else {
-				state = ControllerState.ADD_PLAYER;
+				state = ControllerState.DONE;
 			}
 			break;
 		case ADD_PLAYER:
@@ -92,6 +92,7 @@ public class Controller
 			else {
 				state = ControllerState.PLAY_ROUND;
 			}
+			break;
 		case PLAY_ROUND:
 			if (response.toLowerCase().charAt(0) == 'y') {
 				state = ControllerState.TAKE_A_TURN;
@@ -99,6 +100,7 @@ public class Controller
 			else {
 				state = ControllerState.NEXT_PLAYER;
 			}
+			break;
 ///		case ADD_ANOTHER_PLAYER:
 //			returnString = "Add another player? (y/n) ";
 //			break;
