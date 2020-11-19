@@ -158,7 +158,7 @@ class TestController
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
-		assertEquals(0,controller.getGame().getKitty());
+		assertEquals(1,controller.getGame().getKitty());
 		controller.setResponse("y");
 
 		

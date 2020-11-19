@@ -109,11 +109,13 @@ public class Controller
 				game.takeATurn();
 				if (dice.getState() != DiceState.GOOD)
 				{
+					game.addScorePoints();
 					game.goToNextPlayer();
 				}
 			}
 			else
 			{
+				game.addScorePoints();
 				game.goToNextPlayer();
 			}
 			state = ControllerState.TAKE_A_TURN;
