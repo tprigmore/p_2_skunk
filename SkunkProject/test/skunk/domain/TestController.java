@@ -56,8 +56,8 @@ class TestController
 	@Test
 	void test_controller_game_setup_and_play()
 	{
-		Die die1 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 1, 6, 3, 2, 4});
-		Die die2 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 4, 6, 3, 1, 4 });
+		Die die1 = new PredictableDie(new int[]{ 1, 6, 6, 6, 5, 3, 1, 6, 6, 6, 3, 2, 4});
+		Die die2 = new PredictableDie(new int[]{ 1, 6, 6, 6, 5, 3, 4, 6, 6, 6, 3, 1, 4 });
 		Dice dice = Dice.getInstance();
 		dice.setupDie(die1, die2);
 		
@@ -95,7 +95,7 @@ class TestController
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
-		assertEquals(4,controller.getGame().getPlayerTurnPoints());
+		assertEquals(12,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
@@ -103,7 +103,7 @@ class TestController
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
-		assertEquals(10,controller.getGame().getPlayerTurnPoints());
+		assertEquals(24,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
@@ -111,7 +111,7 @@ class TestController
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
-		assertEquals(18,controller.getGame().getPlayerTurnPoints());
+		assertEquals(36,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("n");
@@ -135,17 +135,17 @@ class TestController
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Pete's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
-		assertEquals(22,controller.getGame().getPlayerTurnPoints());
+		assertEquals(16,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
 
-		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
 				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
-		assertEquals(18,controller.getGame().getPlayerGamePoints());
+		assertEquals(36,controller.getGame().getPlayerGamePoints());
 		assertEquals(1,controller.getGame().getKitty());
 		controller.setResponse("y");
 		
@@ -153,10 +153,26 @@ class TestController
 		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(12,controller.getGame().getPlayerTurnPoints());
-		assertEquals(18,controller.getGame().getPlayerGamePoints());
+		assertEquals(36,controller.getGame().getPlayerGamePoints());
+		assertEquals(1,controller.getGame().getKitty());
+		controller.setResponse("y");
+
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(24,controller.getGame().getPlayerTurnPoints());
+		assertEquals(36,controller.getGame().getPlayerGamePoints());
+		assertEquals(1,controller.getGame().getKitty());
+		controller.setResponse("y");
+
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(36,controller.getGame().getPlayerTurnPoints());
+		assertEquals(36,controller.getGame().getPlayerGamePoints());
 		assertEquals(1,controller.getGame().getKitty());
 		controller.setResponse("n");
-		
+
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Pete's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(49,controller.getGame().getPlayerChips());
@@ -164,5 +180,23 @@ class TestController
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(1,controller.getGame().getKitty());
 		controller.setResponse("y");
+
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals("Pete's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(49,controller.getGame().getPlayerChips());
+		assertEquals(6,controller.getGame().getPlayerTurnPoints());
+		assertEquals(0,controller.getGame().getPlayerGamePoints());
+		assertEquals(1,controller.getGame().getKitty());
+		controller.setResponse("y");
+		
+		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
+		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(0,controller.getGame().getPlayerTurnPoints());
+		assertEquals(72,controller.getGame().getPlayerGamePoints());
+		assertEquals(2,controller.getGame().getKitty());
+		controller.setResponse("y");
+
 	}
 }

@@ -107,21 +107,28 @@ public class Controller
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				game.takeATurn();
+				state = ControllerState.TAKE_A_TURN;
 				if (dice.getState() != DiceState.GOOD)
 				{
-					game.addScorePoints();
-					game.goToNextPlayer();
+					goToNextPlayersTurn();					
 				}
 			}
 			else
 			{
-				game.addScorePoints();
-				game.goToNextPlayer();
+				goToNextPlayersTurn();
 			}
-			state = ControllerState.TAKE_A_TURN;
+			
 			break;
 		default:
 			break;
+		}
+	}
+
+	private void goToNextPlayersTurn()
+	{
+		game.addScorePoints();
+		if (game.goToNextPlayer() == GameState.ROUND_END) {
+			state = ControllerState.PLAY_ROUND;
 		}
 	}
 
