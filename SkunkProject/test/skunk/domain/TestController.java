@@ -113,10 +113,10 @@ class TestController
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("n");
 		
-		assertEquals(ControllerState.NEXT_PLAYER,controller.getState());
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Pete's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
-		assertEquals(10,controller.getGame().getPlayerTurnPoints());
+		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(0,controller.getGame().getKitty());
 

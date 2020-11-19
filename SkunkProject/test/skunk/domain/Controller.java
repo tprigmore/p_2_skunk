@@ -39,14 +39,12 @@ public class Controller
 			returnString = "Add another player? (y/n) ";
 			break;
 		case PLAY_ROUND:
-			returnString = "------------ Next Round ---------------------------\n" +
-				getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
+			returnString = "------------ Next Round ---------------------------\n" + getGame().getPlayerName()
+					+ "'s turn.  Want to roll? (y/n) ";
 			break;
 		case TAKE_A_TURN:
-			returnString = getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";;
-			break;
-		case NEXT_PLAYER:
-			returnString = getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";;
+			returnString = getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
+			;
 			break;
 
 		default:
@@ -55,32 +53,38 @@ public class Controller
 		}
 		return returnString;
 	}
-	
+
 	public void setResponse(String response)
 	{
 		switch (state)
 		{
 		case START_GAME:
-			if (response.toLowerCase().charAt(0) == 'y') {
+			if (response.toLowerCase().charAt(0) == 'y')
+			{
 				state = ControllerState.RULES;
 			}
-			else {
+			else
+			{
 				state = ControllerState.DONE;
 			}
 			break;
 		case RULES:
-			if (response.toLowerCase().charAt(0) == 'y') {
+			if (response.toLowerCase().charAt(0) == 'y')
+			{
 				state = ControllerState.DISPLAY_RULES;
 			}
-			else {
+			else
+			{
 				state = ControllerState.ADD_PLAYER;
 			}
 			break;
 		case DISPLAY_RULES:
-			if (response.toLowerCase().charAt(0) == 'y') {
+			if (response.toLowerCase().charAt(0) == 'y')
+			{
 				state = ControllerState.ADD_PLAYER;
 			}
-			else {
+			else
+			{
 				state = ControllerState.DONE;
 			}
 			break;
@@ -89,43 +93,31 @@ public class Controller
 			state = ControllerState.ADD_ANOTHER_PLAYER;
 			break;
 		case ADD_ANOTHER_PLAYER:
-			if (response.toLowerCase().charAt(0) == 'y') {
+			if (response.toLowerCase().charAt(0) == 'y')
+			{
 				state = ControllerState.ADD_PLAYER;
 			}
-			else {
+			else
+			{
 				state = ControllerState.PLAY_ROUND;
 			}
 			break;
 		case PLAY_ROUND:
-			if (response.toLowerCase().charAt(0) == 'y') {
-				game.takeATurn();
-				if (dice.getState() == DiceState.GOOD) {
-					state = ControllerState.TAKE_A_TURN;
-				}
-				else {
-				state = ControllerState.NEXT_PLAYER;
-				}
-			}
-			else {
-				state = ControllerState.NEXT_PLAYER;
-			}
-			break;
 		case TAKE_A_TURN:
-			if (response.toLowerCase().charAt(0) == 'y') {
+			if (response.toLowerCase().charAt(0) == 'y')
+			{
 				game.takeATurn();
-				if (dice.getState() == DiceState.GOOD) {
-					state = ControllerState.TAKE_A_TURN;
-				}
-				else {
-				state = ControllerState.NEXT_PLAYER;
+				if (dice.getState() != DiceState.GOOD)
+				{
+					game.goToNextPlayer();
 				}
 			}
-			else {
-				state = ControllerState.NEXT_PLAYER;
+			else
+			{
+				game.goToNextPlayer();
 			}
-			break;///		case ADD_ANOTHER_PLAYER:
-//			returnString = "Add another player? (y/n) ";
-//			break;
+			state = ControllerState.TAKE_A_TURN;
+			break;
 		default:
 			break;
 		}
