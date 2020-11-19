@@ -46,9 +46,12 @@ public class Controller
 			returnString = getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
 			;
 			break;
-
+		case FINAL_ROUND:
+			returnString = "------------ Final Round ---------------------------\n" + getGame().getPlayerName()
+					+ "'s turn.  Want to roll? (y/n) ";
+			break;
 		default:
-			returnString = "No message";
+			returnString = "No message?????????????";
 			break;
 		}
 		return returnString;
@@ -128,7 +131,14 @@ public class Controller
 	private void goToNextPlayersTurn()
 	{
 		game.addScorePoints();
-		if (game.goToNextPlayer() == GameState.ROUND_END) {
+		game.goToNextPlayer();
+		if (game.getState() == GameState.GAME_OVER) {
+			state = ControllerState.GAME_OVER;
+		}
+		else if (game.getState() == GameState.FINAL_ROUND) {
+			state = ControllerState.FINAL_ROUND;
+		}
+		else if (game.getState() == GameState.ROUND_END) {
 			state = ControllerState.PLAY_ROUND;
 		}
 	}

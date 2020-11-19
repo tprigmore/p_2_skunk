@@ -8,6 +8,7 @@ public class Game
 	private ArrayList<Player> playerArray = new ArrayList<Player>();
 	private int playerCount;
 	private int playerIndex;
+	private int lastPlayerIndex = -1;
 	private Kitty kitty = Kitty.getInstance();
 	private Turn turn;
 
@@ -25,7 +26,7 @@ public class Game
 
 	public int getPlayerIndex()
 	{
-		return this.playerIndex ;
+		return this.playerIndex;
 	}
 
 	public GameState getState()
@@ -61,7 +62,7 @@ public class Game
 	{
 		this.kitty.setKitty(chips);
 	}
-	
+
 	public int getKitty()
 	{
 		return this.kitty.getKitty();
@@ -75,21 +76,43 @@ public class Game
 
 	public GameState goToNextPlayer()
 	{
-		if(this.playerIndex == (playerCount - 1)) {
+		this.playerIndex++;
+
+		if (this.state == GameState.FINAL_ROUND)
+		{
+			if (this.playerIndex == playerCount)
+			{
+				this.playerIndex = 0;
+			}
+			if (this.playerIndex == this.lastPlayerIndex)
+			{
+				this.state = GameState.GAME_OVER;
+			}
+		}
+		else if (this.playerIndex == playerCount)
+		{
 			this.playerIndex = 0;
 			this.state = GameState.ROUND_END;
 		}
-		else {
-			this.playerIndex++;
+		else
+		{
 			this.state = GameState.ROUND_ACTIVE;
 		}
-		return this.state ;
+		return this.state;
 	}
 
 	public void addScorePoints()
 	{
 		Player activePlayer = this.playerArray.get(playerIndex);
 		activePlayer.setGamePoints(activePlayer.getGamePoints() + activePlayer.getTurnPoints());
+		if (activePlayer.getGamePoints() >= 100)
+		{
+			this.state = GameState.FINAL_ROUND;
+			if (this.lastPlayerIndex == -1)
+			{
+				this.lastPlayerIndex = playerIndex;
+			}
+		}
 		activePlayer.setTurnPoints(0);
 	}
 
