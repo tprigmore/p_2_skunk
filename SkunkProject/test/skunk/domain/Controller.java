@@ -4,6 +4,7 @@ public class Controller
 {
 	private ControllerState state;
 	private Game game;
+	private Dice dice = Dice.getInstance();
 
 	public Controller()
 	{
@@ -42,8 +43,10 @@ public class Controller
 				getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
 			break;
 		case TAKE_A_TURN:
-			returnString = "------------ Next Round ---------------------------\n" +
-				getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";
+			returnString = getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";;
+			break;
+		case NEXT_PLAYER:
+			returnString = getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ";;
 			break;
 
 		default:
@@ -95,13 +98,32 @@ public class Controller
 			break;
 		case PLAY_ROUND:
 			if (response.toLowerCase().charAt(0) == 'y') {
-				state = ControllerState.TAKE_A_TURN;
+				game.takeATurn();
+				if (dice.getState() == DiceState.GOOD) {
+					state = ControllerState.TAKE_A_TURN;
+				}
+				else {
+				state = ControllerState.NEXT_PLAYER;
+				}
 			}
 			else {
 				state = ControllerState.NEXT_PLAYER;
 			}
 			break;
-///		case ADD_ANOTHER_PLAYER:
+		case TAKE_A_TURN:
+			if (response.toLowerCase().charAt(0) == 'y') {
+				game.takeATurn();
+				if (dice.getState() == DiceState.GOOD) {
+					state = ControllerState.TAKE_A_TURN;
+				}
+				else {
+				state = ControllerState.NEXT_PLAYER;
+				}
+			}
+			else {
+				state = ControllerState.NEXT_PLAYER;
+			}
+			break;///		case ADD_ANOTHER_PLAYER:
 //			returnString = "Add another player? (y/n) ";
 //			break;
 		default:
