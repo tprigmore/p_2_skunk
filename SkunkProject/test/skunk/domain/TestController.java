@@ -56,8 +56,8 @@ class TestController
 	@Test
 	void test_controller_game_setup_and_play()
 	{
-		Die die1 = new PredictableDie(new int[]{ 1, 6, 6, 6, 5, 3, 1, 6, 6, 6, 3, 2, 4});
-		Die die2 = new PredictableDie(new int[]{ 1, 6, 6, 6, 5, 3, 4, 6, 6, 6, 3, 1, 4 });
+		Die die1 = new PredictableDie(new int[]{ 1, 6, 6, 6, 5, 3, 1, 6, 6, 6, 3, 2, 6, 6, 6, 4});
+		Die die2 = new PredictableDie(new int[]{ 1, 6, 6, 6, 5, 3, 4, 6, 6, 6, 3, 1, 6, 6, 6, 4 });
 		Dice dice = Dice.getInstance();
 		dice.setupDie(die1, die2);
 		
@@ -195,8 +195,36 @@ class TestController
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(72,controller.getGame().getPlayerGamePoints());
-		assertEquals(2,controller.getGame().getKitty());
+		assertEquals(3,controller.getGame().getKitty());
 		controller.setResponse("y");
+
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(12,controller.getGame().getPlayerTurnPoints());
+		assertEquals(72,controller.getGame().getPlayerGamePoints());
+		assertEquals(3,controller.getGame().getKitty());
+		controller.setResponse("y");
+		
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(24,controller.getGame().getPlayerTurnPoints());
+		assertEquals(72,controller.getGame().getPlayerGamePoints());
+		assertEquals(3,controller.getGame().getKitty());
+		controller.setResponse("y");
+		
+		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
+		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(36,controller.getGame().getPlayerTurnPoints());
+		assertEquals(72,controller.getGame().getPlayerGamePoints());
+		assertEquals(3,controller.getGame().getKitty());
+		controller.setResponse("n");
+
+
+
+
 
 	}
 }
