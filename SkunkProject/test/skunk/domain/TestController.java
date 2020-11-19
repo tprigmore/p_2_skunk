@@ -20,6 +20,9 @@ class TestController
 		Controller controller = new Controller();
 		assertEquals("Do you want to play skunk? (y/n) ", controller.getMessage(ControllerState.START_GAME));
 		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage(ControllerState.RULES));
+		assertEquals("Enter player's name: ", controller.getMessage(ControllerState.ADD_PLAYER));
+		assertEquals("Add another player? (y/n) ", controller.getMessage(ControllerState.ADD_ANOTHER_PLAYER));
+		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage(ControllerState.RULES));
 	}
 
 }
