@@ -50,6 +50,9 @@ public class Controller
 			returnString = "------------ Final Round ---------------------------\n" + getGame().getPlayerName()
 					+ "'s turn.  Want to roll? (y/n) ";
 			break;
+		case GAME_OVER:
+			returnString = "GAME OVER";
+			break;
 		default:
 			returnString = "No message?????????????";
 			break;
