@@ -141,7 +141,8 @@ class TestController
 		controller.setResponse("y");
 
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
-		assertEquals("Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(18,controller.getGame().getPlayerGamePoints());
@@ -163,8 +164,5 @@ class TestController
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(1,controller.getGame().getKitty());
 		controller.setResponse("y");
-
-		
-
 	}
 }
