@@ -103,6 +103,7 @@ public class Controller
 			}
 			break;
 		case PLAY_ROUND:
+		case FINAL_ROUND:
 		case TAKE_A_TURN:
 			if (response.toLowerCase().charAt(0) == 'y')
 			{

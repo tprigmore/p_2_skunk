@@ -222,6 +222,14 @@ class TestController
 		assertEquals(3,controller.getGame().getKitty());
 		controller.setResponse("n");
 
+		assertEquals(ControllerState.FINAL_ROUND,controller.getState());
+		assertEquals("------------ Final Round ---------------------------\n" +
+				"Pete's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
+		assertEquals(47,controller.getGame().getPlayerChips());
+		assertEquals(0,controller.getGame().getPlayerTurnPoints());
+		assertEquals(0,controller.getGame().getPlayerGamePoints());
+		assertEquals(3,controller.getGame().getKitty());
+		controller.setResponse("y");
 
 
 
