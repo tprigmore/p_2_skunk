@@ -11,7 +11,6 @@ public class Kitty
 	
 	public static Kitty getInstance() // overloaded constructor
 	{
-		kitty.setKitty(0);
 		return kitty;
 	}
 

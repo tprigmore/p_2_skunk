@@ -60,6 +60,9 @@ class TestController
 		Die die2 = new PredictableDie(new int[]{ 1, 2, 3, 4, 5, 6, 4, 6, 3, 1, 4 });
 		Dice dice = Dice.getInstance();
 		dice.setupDie(die1, die2);
+		
+		Kitty kitty = Kitty.getInstance();
+		kitty.setKitty(0);
 
 		Controller controller = new Controller();
 		
@@ -155,7 +158,7 @@ class TestController
 		
 		assertEquals(ControllerState.TAKE_A_TURN,controller.getState());
 		assertEquals("Pete's turn.  Want to roll? (y/n) ", controller.getMessage(controller.getState()));
-		assertEquals(50,controller.getGame().getPlayerChips());
+		assertEquals(49,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(0,controller.getGame().getPlayerGamePoints());
 		assertEquals(1,controller.getGame().getKitty());
