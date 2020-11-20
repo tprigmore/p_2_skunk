@@ -4,13 +4,19 @@ import static org.junit.Assert.*;
 
 import org.junit.Test;
 
-public class TestDie
+public class TestRandomDie
 {
 
 	@Test
-	public void test_die()
+	public void test_die_constructor()
 	{
-		fail("Not yet implemented");
+		boolean flag = false;
+		Die die = new RandomDie();
+		int lastRoll = die.getLastRoll();
+		if (lastRoll >= 2 && lastRoll <=12)
+			flag = true;
+		
+		assertTrue(flag);
 	}
 
 }
