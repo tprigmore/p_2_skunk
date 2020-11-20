@@ -196,7 +196,7 @@ public class Controller
 		returnString = game.getPlayerName() + " rolled a " + 
 				skunkString + ". Turn point = " + game.getPlayerTurnPoints() +
 				". Game points = " + game.getPlayerGamePoints() +
-				". Chips " + game.getPlayerChips();
+				". Chips = " + game.getPlayerChips();
 		return returnString;
 		
 	}
