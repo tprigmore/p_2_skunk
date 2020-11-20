@@ -48,4 +48,11 @@ public class TestRandomDie
 		assertTrue(result);
 	}
 	
+	@Test
+	public void test_die_for_2()
+	{
+		boolean result = false;
+	assertTrue(result);
+	}
+	
 }
