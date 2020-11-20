@@ -116,21 +116,24 @@ public class Game
 		activePlayer.setTurnPoints(0);
 	}
 
-	public void findWinner()
+	public Player findWinner()
 	{
 		playerIndex = 0;
+		Player activePlayer;
 		int maxGamePionts = 0;
-		Player activePlayer = this.playerArray.get(playerIndex);
-		if (activePlayer.getGamePoints() > maxGamePionts)
+		int maxPlayerIndex = 0;
+		for (int i = 0; i < this.playerCount; i++)
 		{
-			this.state = GameState.FINAL_ROUND;
-			if (this.lastPlayerIndex == -1)
+			activePlayer = this.playerArray.get(playerIndex);
+			if (activePlayer.getGamePoints() > maxGamePionts)
 			{
-				this.lastPlayerIndex = playerIndex;
+				maxGamePionts = activePlayer.getGamePoints();
+				maxPlayerIndex = i;
 			}
 		}
-		activePlayer.setTurnPoints(0);
+		return this.playerArray.get(maxPlayerIndex);
 	}
+
 	public int getPlayerTurnPoints()
 	{
 		Player activePlayer = this.playerArray.get(playerIndex);

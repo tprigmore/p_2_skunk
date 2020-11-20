@@ -1,5 +1,7 @@
 package skunk.domain;
 
+import edu.princeton.cs.introcs.StdOut;
+
 public class Controller
 {
 	private ControllerState state;
@@ -52,6 +54,9 @@ public class Controller
 			break;
 		case GAME_OVER:
 			returnString = "GAME OVER";
+			break;
+		case DONE:
+			returnString = "BYE";
 			break;
 		default:
 			returnString = "No message?????????????";
@@ -125,6 +130,17 @@ public class Controller
 				goToNextPlayersTurn();
 			}
 			
+			break;
+		case GAME_OVER:
+			Player player = this.game.findWinner();
+			StdOut.println("the winner is" + player.getName());
+			int chips = game.getKitty();
+			StdOut.println("Give " + chips + " to player.");
+			player.setChips(player.getChips() + chips);
+			game.setKitty(0);
+			state = ControllerState.DONE;
+			break;
+		case DONE:
 			break;
 		default:
 			break;

@@ -242,6 +242,7 @@ class TestController
 		assertEquals(ControllerState.GAME_OVER,controller.getState());
 		assertEquals("GAME OVER", controller.getMessage(controller.getState()));
 		
+		controller.setResponse("y");
 		assertEquals(57,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(108,controller.getGame().getPlayerGamePoints());
