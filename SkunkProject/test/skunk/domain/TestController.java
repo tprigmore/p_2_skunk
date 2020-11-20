@@ -310,7 +310,7 @@ class TestController
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
 		
-		assertEquals("first test", controller.getResults());
+		assertEquals("first test", controller.getPlayerResults());
 	}
 		
 

@@ -175,7 +175,7 @@ public class Controller
 		this.game = game;
 	}
 
-	public String getResults()
+	public String getPlayerResults()
 	{
 		return "first test";
 		
