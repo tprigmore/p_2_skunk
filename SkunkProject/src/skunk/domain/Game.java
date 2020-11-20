@@ -17,6 +17,7 @@ public class Game
 		setState(GameState.IDLE);
 		this.playerCount = 0;
 		this.setPlayerIndex(0);
+		this.setKitty(0);
 	}
 
 	public void setPlayerIndex(int index)
