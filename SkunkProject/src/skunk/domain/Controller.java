@@ -122,20 +122,20 @@ public class Controller
 				state = ControllerState.TAKE_A_TURN;
 				if (dice.getState() != DiceState.GOOD)
 				{
-					goToNextPlayersTurn();					
+					goToNextPlayersTurn();
 				}
 			}
 			else
 			{
 				goToNextPlayersTurn();
 			}
-			
+
 			break;
 		case GAME_OVER:
 			Player player = this.game.findWinner();
-			//StdOut.println("the winner is" + player.getName());
+			// StdOut.println("the winner is" + player.getName());
 			int chips = game.getKitty();
-			//StdOut.println("Give " + chips + " to player.");
+			// StdOut.println("Give " + chips + " to player.");
 			player.setChips(player.getChips() + chips);
 			game.setKitty(0);
 			state = ControllerState.DONE;
@@ -151,13 +151,16 @@ public class Controller
 	{
 		game.addScorePoints();
 		game.goToNextPlayer();
-		if (game.getState() == GameState.GAME_OVER) {
+		if (game.getState() == GameState.GAME_OVER)
+		{
 			state = ControllerState.GAME_OVER;
 		}
-		else if (game.getState() == GameState.FINAL_ROUND) {
+		else if (game.getState() == GameState.FINAL_ROUND)
+		{
 			state = ControllerState.FINAL_ROUND;
 		}
-		else if (game.getState() == GameState.ROUND_END) {
+		else if (game.getState() == GameState.ROUND_END)
+		{
 			state = ControllerState.PLAY_ROUND;
 		}
 	}
@@ -174,31 +177,53 @@ public class Controller
 
 	public String getPlayerResults()
 	{
-		String returnString ;
+		String returnString;
 		String skunkString;
-		switch(this.dice.getState()) {
-		case GOOD:
-			skunkString = String.valueOf(this.dice.getLastRoll());
+
+		switch (state)
+		{
+		case START_GAME:
+		case RULES:
+		case DISPLAY_RULES:
+		case ADD_PLAYER:
+		case ADD_ANOTHER_PLAYER:
+		case DONE:
+			returnString = "";
 			break;
-		case DOUBLE_SKUNK:
-			skunkString = "Double Skunk";
-			break;
-		case SKUNK_DEUCE:
-			skunkString = "Skunk Deuce";
-			break;
-		case SKUNK:
-			skunkString = "Skunk";
+		case PLAY_ROUND:
+		case FINAL_ROUND:
+		case TAKE_A_TURN:
+		case GAME_OVER:
+			switch (this.dice.getState())
+			{
+			case GOOD:
+				skunkString = String.valueOf(this.dice.getLastRoll());
+				break;
+			case DOUBLE_SKUNK:
+				skunkString = "Double Skunk";
+				break;
+			case SKUNK_DEUCE:
+				skunkString = "Skunk Deuce";
+				break;
+			case SKUNK:
+				skunkString = "Skunk";
+				break;
+			default:
+				skunkString = " ";
+				break;
+			}
+			returnString = game.getPlayerName() + " rolled a " + skunkString + ". Turn point = "
+					+ game.getPlayerTurnPoints() + ". Game points = " + game.getPlayerGamePoints() + ". Chips = "
+					+ game.getPlayerChips();
+
 			break;
 		default:
-			skunkString = " ";
+			returnString = "";
 			break;
 		}
-		returnString = game.getPlayerName() + " rolled a " + 
-				skunkString + ". Turn point = " + game.getPlayerTurnPoints() +
-				". Game points = " + game.getPlayerGamePoints() +
-				". Chips = " + game.getPlayerChips();
+
 		return returnString;
-		
+
 	}
 
 }

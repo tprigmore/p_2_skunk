@@ -16,14 +16,12 @@ public class SkunkApp
 		Die die2 = new DieReal();
 		dice.setupDie(die1, die2);
 
-		
-		while(controller.getState() != ControllerState.GAME_OVER) {
+		while (controller.getState() != ControllerState.GAME_OVER)
+		{
 			StdOut.println(controller.getMessage());
 			response = StdIn.readLine();
 			controller.setResponse(response);
 			StdOut.println(controller.getPlayerResults());
 		}
-
 	}
-
 }
