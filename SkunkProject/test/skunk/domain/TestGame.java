@@ -51,6 +51,7 @@ class TestGame
 	void test_game_kitty()
 	{
 		Game game = new Game();
+		game.setKitty(0);
 		assertEquals(0, game.getKitty());
 		game.setKitty(20);
 		assertEquals(20, game.getKitty());
