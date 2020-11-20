@@ -13,7 +13,7 @@ public class TestRandomDie
 		boolean result = false;
 		Die die = new RandomDie();
 		int lastRoll = die.getLastRoll();
-		if (lastRoll >= 2 && lastRoll <= 6)
+		if (lastRoll >= 1 && lastRoll <= 6)
 			result = true;
 
 		assertTrue(result);
@@ -137,6 +137,13 @@ public class TestRandomDie
 			}
 		}
 		assertTrue(result);
+	}
+	
+	@Test
+	public void test_die_for_0()
+	{
+		boolean result = true;
+		assertFalse(result);
 	}
 
 }
