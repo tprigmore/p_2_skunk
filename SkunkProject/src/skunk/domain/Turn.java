@@ -25,11 +25,6 @@ public class Turn
 		return this.state;
 	}
 
-//	public void setDice(Dice dice)
-//	{
-//		this.dice = dice;
-//	}
-
 	public int takeATurn()
 	{
 		this.dice.roll();
