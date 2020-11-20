@@ -19,11 +19,11 @@ public class Controller
 		return this.state;
 	}
 
-	public String getMessage(ControllerState state)
+	public String getMessage()
 	{
 		String returnString;
 
-		switch (state)
+		switch (this.state)
 		{
 		case START_GAME:
 			returnString = "Do you want to play skunk? (y/n) ";
