@@ -48,6 +48,7 @@ public class Dice
 		dice.die1 = die1;
 		dice.die2 = die2;
 		dice.roll();
+		dice.state = DiceState.GOOD;
 	}
 
 	// Instance methods can also be declared anywhere in body of class

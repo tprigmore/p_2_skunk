@@ -34,6 +34,11 @@ public class Game
 	{
 		return state;
 	}
+	
+	public DiceState getTurnState()
+	{
+		return this.turn.getState();
+	}
 
 	public void setState(GameState state)
 	{
