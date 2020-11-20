@@ -310,7 +310,7 @@ class TestController
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
 		
-		assertEquals("first test", controller.getPlayerResults());
+		assertEquals("Scott rolled a 12. Turn point = 24. Game points = 0, Chips = 50", controller.getPlayerResults());
 	}
 		
 
