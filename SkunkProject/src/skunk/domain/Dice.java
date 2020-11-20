@@ -20,7 +20,8 @@ public class Dice
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
 
-	private static Dice dice = new Dice() ;
+//	private static Dice dice = new Dice() ;
+	private static Dice dice ;	
 	private DiceState state;
 	private int lastRoll;
 	private Die die1;
@@ -35,6 +36,9 @@ public class Dice
 
 	public static Dice getInstance()
 	{
+		if (null == dice) {
+			dice = new Dice();
+		}
 		return dice;
 	}
 
