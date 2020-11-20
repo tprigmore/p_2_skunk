@@ -39,7 +39,7 @@ class TestDice
 		Die die2 = new PredictableDie(new int[]{ 1, 1, 3, 4 });
 		Dice dice = Dice.getInstance();
 		dice.setupDie(die1, die2);
-		assertEquals(DiceState.DOUBLE_SKUNK, dice.getState());
+		assertEquals(DiceState.GOOD, dice.getState());
 		dice.roll();
 		assertEquals(DiceState.SKUNK_DEUCE, dice.getState());
 		dice.roll();

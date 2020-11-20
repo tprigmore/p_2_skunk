@@ -17,7 +17,7 @@ class TestTurn
 		Kitty kitty = Kitty.getInstance();
 		Player player = new Player("Fred");
 		Turn turn = new Turn(player);
-		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
+		assertEquals(DiceState.GOOD, turn.getState());
 	}
 
 	@Test
@@ -30,7 +30,7 @@ class TestTurn
 		Kitty kitty = Kitty.getInstance();
 		Player player = new Player("Joe");
 		Turn turn = new Turn(player);
-		assertEquals(DiceState.DOUBLE_SKUNK, turn.getState());
+		assertEquals(DiceState.GOOD, turn.getState());
 		turn.takeATurn();
 		assertEquals(DiceState.SKUNK_DEUCE, turn.getState());
 		turn.takeATurn();

@@ -12,9 +12,6 @@ public class Controller
 	{
 		this.state = ControllerState.START_GAME;
 		this.setGame(new Game());
-//		Die die1 = new DieReal();
-//		Die die2 = new DieReal();
-//		dice.setupDie(die1, die2);
 	}
 
 	public ControllerState getState()
@@ -177,7 +174,30 @@ public class Controller
 
 	public String getPlayerResults()
 	{
-		return "first test";
+		String returnString ;
+		String skunkString;
+		switch(this.dice.getState()) {
+		case GOOD:
+			skunkString = String.valueOf(this.dice.getLastRoll());
+			break;
+		case DOUBLE_SKUNK:
+			skunkString = "Double Skunk";
+			break;
+		case SKUNK_DEUCE:
+			skunkString = "Skunk Deuce";
+			break;
+		case SKUNK:
+			skunkString = "Skunk";
+			break;
+		default:
+			skunkString = " ";
+			break;
+		}
+		returnString = game.getPlayerName() + " rolled a " + 
+				skunkString + ". Turn point = " + game.getPlayerTurnPoints() +
+				". Game points = " + game.getPlayerGamePoints() +
+				". Chips " + game.getPlayerChips();
+		return returnString;
 		
 	}
 

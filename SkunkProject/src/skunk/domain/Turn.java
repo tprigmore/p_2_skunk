@@ -16,6 +16,7 @@ public class Turn
 		this.dice = Dice.getInstance();
 		this.kitty = Kitty.getInstance();
 		this.player = player;
+		this.state = DiceState.GOOD;
 	}
 
 	public DiceState getState()

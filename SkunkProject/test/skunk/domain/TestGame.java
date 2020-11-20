@@ -165,4 +165,5 @@ class TestGame
 		assertEquals(0, game.getPlayerGamePoints());
 		assertEquals(46,game.getPlayerChips());
 	}
+	
 }

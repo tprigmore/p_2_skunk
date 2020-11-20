@@ -21,6 +21,7 @@ public class SkunkApp
 			StdOut.println(controller.getMessage());
 			response = StdIn.readLine();
 			controller.setResponse(response);
+			StdOut.println(controller.getPlayerResults());
 		}
 
 	}
