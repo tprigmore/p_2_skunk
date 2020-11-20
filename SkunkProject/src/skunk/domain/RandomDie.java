@@ -1,10 +1,10 @@
 package skunk.domain;
 
-public class DieReal implements Die
+public class RandomDie implements Die
 {
 	private int lastRoll;
 
-	public DieReal()
+	public RandomDie()
 	{
 		this.roll();
 	}

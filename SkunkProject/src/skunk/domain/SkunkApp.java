@@ -12,8 +12,8 @@ public class SkunkApp
 		String response;
 		Dice dice = Dice.getInstance();
 
-		Die die1 = new DieReal();
-		Die die2 = new DieReal();
+		Die die1 = new RandomDie();
+		Die die2 = new RandomDie();
 		dice.setupDie(die1, die2);
 
 		while (controller.getState() != ControllerState.GAME_OVER)
