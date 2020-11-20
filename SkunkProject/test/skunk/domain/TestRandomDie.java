@@ -52,6 +52,18 @@ public class TestRandomDie
 	public void test_die_for_2()
 	{
 		boolean result = false;
+		for (int i = 0; i < 100; i++)
+		{
+			Die die = new RandomDie();
+			die.roll();
+			int value = die.getLastRoll();
+			if (value == 2)
+			{
+				result = true;
+				break;
+			}
+		}
+
 	assertTrue(result);
 	}
 	
