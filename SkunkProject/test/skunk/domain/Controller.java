@@ -175,4 +175,10 @@ public class Controller
 		this.game = game;
 	}
 
+	public String displayResults()
+	{
+		return "first test";
+		
+	}
+
 }
