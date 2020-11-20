@@ -45,7 +45,7 @@ public class TestRandomDie
 				break;
 			}
 		}
-		assertFalse(result);
+		assertTrue(result);
 	}
 	
 }
