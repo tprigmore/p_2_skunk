@@ -12,6 +12,9 @@ public class Controller
 	{
 		this.state = ControllerState.START_GAME;
 		this.setGame(new Game());
+//		Die die1 = new DieReal();
+//		Die die2 = new DieReal();
+//		dice.setupDie(die1, die2);
 	}
 
 	public ControllerState getState()
@@ -133,9 +136,9 @@ public class Controller
 			break;
 		case GAME_OVER:
 			Player player = this.game.findWinner();
-			StdOut.println("the winner is" + player.getName());
+			//StdOut.println("the winner is" + player.getName());
 			int chips = game.getKitty();
-			StdOut.println("Give " + chips + " to player.");
+			//StdOut.println("Give " + chips + " to player.");
 			player.setChips(player.getChips() + chips);
 			game.setKitty(0);
 			state = ControllerState.DONE;
