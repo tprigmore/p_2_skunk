@@ -54,4 +54,9 @@ public class Turn
 		}
 		return this.player.getTurnPoints();
 	}
+
+	public int getLastRoll()
+	{
+		return this.dice.getLastRoll();
+	}
 }

@@ -19,7 +19,7 @@ public class SkunkApp
 		{
 			StdOut.println(controller.getMessage());
 			StdOut.println(controller.setResponse(StdIn.readLine()));
-			
 		}
+		StdOut.println(controller.getFinalScore());
 	}
 }

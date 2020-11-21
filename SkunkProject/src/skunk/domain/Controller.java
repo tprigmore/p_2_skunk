@@ -93,6 +93,7 @@ public class Controller
 			}
 			break;
 		case RULES:
+			returnString = "Short rules...\n"; 
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				state = ControllerState.DISPLAY_RULES;
@@ -103,7 +104,6 @@ public class Controller
 							}
 			break;
 		case DISPLAY_RULES:
-			returnString = getPlayerResults(); 
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				state = ControllerState.ADD_PLAYER;
@@ -133,7 +133,7 @@ public class Controller
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				game.takeATurn();
-				returnString = getPlayerResults(); 
+				returnString = game.getPlayerStats(); 
 				state = ControllerState.TAKE_A_TURN;
 				if (dice.getState() != DiceState.GOOD)
 				{
@@ -142,7 +142,7 @@ public class Controller
 			}
 			else
 			{
-				returnString = getPlayerResults(); 
+				returnString = game.getPlayerStats(); 
 				goToNextPlayersTurn();
 			}
 			break;
@@ -153,7 +153,7 @@ public class Controller
 			// StdOut.println("Give " + chips + " to player.");
 			player.setChips(player.getChips() + chips);
 			game.setKitty(0);
-			returnString = getPlayerResults(); 
+			returnString = game.getPlayerStats(); 
 			state = ControllerState.DONE;
 			break;
 		case DONE:
@@ -182,55 +182,10 @@ public class Controller
 		}
 	}
 
-	public String getPlayerResults()
+
+
+	public String getFinalScore()
 	{
-		String returnString = "";
-		String skunkString;
-
-		switch (state)
-		{
-			
-		case START_GAME:
-		case RULES:
-			break;
-		case DISPLAY_RULES:
-			returnString = "Short Rules...";
-			break;
-		case ADD_PLAYER:
-		case ADD_ANOTHER_PLAYER:
-		case DONE:
-			break;
-		case PLAY_ROUND:
-		case FINAL_ROUND:
-		case TAKE_A_TURN:
-		case GAME_OVER:
-			switch (this.dice.getState())
-			{
-			case GOOD:
-				skunkString = String.valueOf(this.dice.getLastRoll());
-				break;
-			case DOUBLE_SKUNK:
-				skunkString = "Double Skunk";
-				break;
-			case SKUNK_DEUCE:
-				skunkString = "Skunk Deuce";
-				break;
-			case SKUNK:
-				skunkString = "Skunk";
-				break;
-			default:
-				skunkString = " ";
-				break;
-			}
-			returnString = game.getPlayerName() + " rolled a " + skunkString + ". Turn points = "
-					+ game.getPlayerTurnPoints() + ". Game points = " + game.getPlayerGamePoints() + ". Chips = "
-					+ game.getPlayerChips() + "\n";
-
-			break;
-		default:
-			returnString = "Default ??";
-			break;
-		}
-		return returnString;
+		return "Final Score";
 	}
 }

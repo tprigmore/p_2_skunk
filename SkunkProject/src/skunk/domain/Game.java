@@ -153,4 +153,35 @@ public class Game
 		return activePlayer.getChips();
 	}
 	
+	public String getPlayerStats()
+	{
+		Player player;
+		player = this.playerArray.get(this.playerIndex);
+		
+		String returnString;
+		String skunkString;
+		switch (this.turn.getState())
+		{
+		case GOOD:
+			skunkString = String.valueOf(this.turn.getLastRoll());
+			break;
+		case DOUBLE_SKUNK:
+			skunkString = "Double Skunk";
+			break;
+		case SKUNK_DEUCE:
+			skunkString = "Skunk Deuce";
+			break;
+		case SKUNK:
+			skunkString = "Skunk";
+			break;
+		default:
+			skunkString = " ";
+			break;
+		}
+		returnString = player.getName() + " rolled a " + skunkString + ". Turn points = "
+				+ player.getTurnPoints() + ". Game points = " + player.getGamePoints() + ". Chips = "
+				+ player.getChips() + "\n";
+		return returnString;
+	}
+	
 }
