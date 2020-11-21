@@ -191,11 +191,11 @@ public class Controller
 		{
 			
 		case START_GAME:
-			break;
 		case RULES:
-			returnString = "Short Rules...";
 			break;
 		case DISPLAY_RULES:
+			returnString = "Short Rules...";
+			break;
 		case ADD_PLAYER:
 		case ADD_ANOTHER_PLAYER:
 		case DONE:
@@ -222,7 +222,7 @@ public class Controller
 				skunkString = " ";
 				break;
 			}
-			returnString = game.getPlayerName() + " rolled a " + skunkString + ". Turn point = "
+			returnString = game.getPlayerName() + " rolled a " + skunkString + ". Turn points = "
 					+ game.getPlayerTurnPoints() + ". Game points = " + game.getPlayerGamePoints() + ". Chips = "
 					+ game.getPlayerChips() + "\n";
 
@@ -231,9 +231,6 @@ public class Controller
 			returnString = "Default ??";
 			break;
 		}
-
 		return returnString;
-
 	}
-
 }

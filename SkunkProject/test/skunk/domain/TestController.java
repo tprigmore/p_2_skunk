@@ -35,7 +35,7 @@ class TestController
 		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage());
 		assertEquals(ControllerState.RULES,controller.getState());
 		controller.setResponse("y");
-		assertEquals("Short rules.\nDo you want to add a player? (y/n) ", controller.getMessage());
+		assertEquals("Do you want to add a player? (y/n) ", controller.getMessage());
 		assertEquals(ControllerState.DISPLAY_RULES,controller.getState());
 		controller.setResponse("y");
 		assertEquals("Enter player's name: ", controller.getMessage());
@@ -72,7 +72,7 @@ class TestController
 		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage());
 		assertEquals(ControllerState.RULES,controller.getState());
 		controller.setResponse("y");
-		assertEquals("Short rules.\nDo you want to add a player? (y/n) ", controller.getMessage());
+		assertEquals("Do you want to add a player? (y/n) ", controller.getMessage());
 		assertEquals(ControllerState.DISPLAY_RULES,controller.getState());
 		controller.setResponse("y");
 		assertEquals("Enter player's name: ", controller.getMessage());
@@ -274,7 +274,7 @@ class TestController
 		assertEquals("Do you want to see the rules? (y/n) ", controller.getMessage());
 		assertEquals(ControllerState.RULES,controller.getState());
 		controller.setResponse("y");
-		assertEquals("Short rules.\nDo you want to add a player? (y/n) ", controller.getMessage());
+		assertEquals("Do you want to add a player? (y/n) ", controller.getMessage());
 		assertEquals(ControllerState.DISPLAY_RULES,controller.getState());
 		controller.setResponse("y");
 		assertEquals("Enter player's name: ", controller.getMessage());
@@ -310,7 +310,7 @@ class TestController
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
 		
-		assertEquals("Scott rolled a 12. Turn point = 36. Game points = 0. Chips = 50", controller.getPlayerResults());
+		assertEquals("Scott rolled a 12. Turn points = 36. Game points = 0. Chips = 50\n", controller.getPlayerResults());
 	}
 		
 
