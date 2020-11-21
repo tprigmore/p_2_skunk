@@ -32,7 +32,7 @@ public class Controller
 			returnString = "Do you want to see the rules? (y/n) ";
 			break;
 		case DISPLAY_RULES:
-			returnString = "Short rules.\nDo you want to add a player? (y/n) ";
+			returnString = "Do you want to add a player? (y/n) ";
 			break;
 		case ADD_PLAYER:
 			returnString = "Enter player's name: ";
@@ -65,8 +65,10 @@ public class Controller
 		return returnString;
 	}
 
-	public void setResponse(String response)
+	public String setResponse(String response)
 	{
+		String returnString = "";                                                                                      
+	
 		switch (state)
 		{
 		case START_GAME:
@@ -87,9 +89,10 @@ public class Controller
 			else
 			{
 				state = ControllerState.ADD_PLAYER;
-			}
+							}
 			break;
 		case DISPLAY_RULES:
+			returnString = getPlayerResults(); 
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				state = ControllerState.ADD_PLAYER;
@@ -119,6 +122,7 @@ public class Controller
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				game.takeATurn();
+				returnString = getPlayerResults(); 
 				state = ControllerState.TAKE_A_TURN;
 				if (dice.getState() != DiceState.GOOD)
 				{
@@ -127,9 +131,9 @@ public class Controller
 			}
 			else
 			{
+				returnString = getPlayerResults(); 
 				goToNextPlayersTurn();
 			}
-
 			break;
 		case GAME_OVER:
 			Player player = this.game.findWinner();
@@ -138,6 +142,7 @@ public class Controller
 			// StdOut.println("Give " + chips + " to player.");
 			player.setChips(player.getChips() + chips);
 			game.setKitty(0);
+			returnString = getPlayerResults(); 
 			state = ControllerState.DONE;
 			break;
 		case DONE:
@@ -145,6 +150,7 @@ public class Controller
 		default:
 			break;
 		}
+		return returnString ;
 	}
 
 	private void goToNextPlayersTurn()
@@ -177,18 +183,21 @@ public class Controller
 
 	public String getPlayerResults()
 	{
-		String returnString;
+		String returnString = "";
 		String skunkString;
 
 		switch (state)
 		{
+			
 		case START_GAME:
+			break;
 		case RULES:
+			returnString = "Short Rules...";
+			break;
 		case DISPLAY_RULES:
 		case ADD_PLAYER:
 		case ADD_ANOTHER_PLAYER:
 		case DONE:
-			returnString = "";
 			break;
 		case PLAY_ROUND:
 		case FINAL_ROUND:
@@ -214,11 +223,11 @@ public class Controller
 			}
 			returnString = game.getPlayerName() + " rolled a " + skunkString + ". Turn point = "
 					+ game.getPlayerTurnPoints() + ". Game points = " + game.getPlayerGamePoints() + ". Chips = "
-					+ game.getPlayerChips();
+					+ game.getPlayerChips() + "\n";
 
 			break;
 		default:
-			returnString = "";
+			returnString = "Default ??";
 			break;
 		}
 

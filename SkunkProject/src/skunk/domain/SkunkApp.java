@@ -9,9 +9,8 @@ public class SkunkApp
 	public static void main(String[] args)
 	{
 		Controller controller = new Controller();
-		String response;
+		
 		Dice dice = Dice.getInstance();
-
 		Die die1 = new RandomDie();
 		Die die2 = new RandomDie();
 		dice.setupDie(die1, die2);
@@ -19,9 +18,8 @@ public class SkunkApp
 		while (controller.getState() != ControllerState.GAME_OVER)
 		{
 			StdOut.println(controller.getMessage());
-			response = StdIn.readLine();
-			controller.setResponse(response);
-			StdOut.println(controller.getPlayerResults());
+			StdOut.println(controller.setResponse(StdIn.readLine()));
+			
 		}
 	}
 }
