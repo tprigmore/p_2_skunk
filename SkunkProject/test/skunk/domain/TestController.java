@@ -46,6 +46,8 @@ class TestController
 		controller.setResponse("n");
 		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott has 0 game points and 50 chips.\n" + 
+				"---------------------------------------------------\n" +
 				controller.getGame().getPlayerName() + "'s turn.  Want to roll? (y/n) ", controller.getMessage());
 
 //		assertEquals("Enter player's name: ", controller.getMessage(ControllerState.ADD_PLAYER));
@@ -89,6 +91,9 @@ class TestController
 		controller.setResponse("n");
 		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott has 0 game points and 50 chips.\n" + 
+				"Pete has 0 game points and 50 chips.\n" +
+				"---------------------------------------------------\n" +
 				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage());
 		controller.setResponse("y");
 		
@@ -142,6 +147,9 @@ class TestController
 
 		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott has 36 game points and 50 chips.\n" + 
+				"Pete has 0 game points and 49 chips.\n" +
+				"---------------------------------------------------\n" +
 				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage());
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
@@ -191,6 +199,9 @@ class TestController
 		
 		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott has 72 game points and 50 chips.\n" + 
+				"Pete has 0 game points and 47 chips.\n" +
+				"---------------------------------------------------\n" +
 				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage());
 		assertEquals(50,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
@@ -224,6 +235,9 @@ class TestController
 
 		assertEquals(ControllerState.FINAL_ROUND,controller.getState());
 		assertEquals("------------ Final Round ---------------------------\n" +
+				"Scott has 108 game points and 50 chips.\n" + 
+				"Pete has 0 game points and 47 chips.\n" +
+				"---------------------------------------------------\n" +
 				"Pete's turn.  Want to roll? (y/n) ", controller.getMessage());
 		assertEquals(47,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
@@ -291,6 +305,9 @@ class TestController
 		controller.setResponse("n");
 		assertEquals(ControllerState.PLAY_ROUND,controller.getState());
 		assertEquals("------------ Next Round ---------------------------\n" +
+				"Scott has 0 game points and 50 chips.\n" + 
+				"Pete has 0 game points and 50 chips.\n" +
+				"---------------------------------------------------\n" +
 				"Scott's turn.  Want to roll? (y/n) ", controller.getMessage());
 		controller.setResponse("y");
 		
@@ -310,7 +327,7 @@ class TestController
 		assertEquals(0,controller.getGame().getKitty());
 		controller.setResponse("y");
 		
-		assertEquals("Scott rolled a 12. Turn points = 36. Game points = 0. Chips = 50\n", controller.getGame().getPlayerStats());
+		assertEquals("Scott rolled a 12. Turn points = 36. Game points = 0. Chips = 50\n", controller.getGame().getPlayerRollStats());
 	}
 		
 

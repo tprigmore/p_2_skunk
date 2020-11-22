@@ -153,7 +153,7 @@ public class Game
 		return activePlayer.getChips();
 	}
 	
-	public String getPlayerStats()
+	public String getPlayerRollStats()
 	{
 		Player player;
 		player = this.playerArray.get(this.playerIndex);
@@ -184,4 +184,18 @@ public class Game
 		return returnString;
 	}
 	
+	public String getAllPlayerStats()
+	{
+		Player player;
+		String returnString = "";
+		
+		for (int i = 0; i < this.playerCount; i++) {
+		player = this.playerArray.get(i);
+		
+		returnString = returnString + player.getName() + " has " + player.getGamePoints() + 
+				" game points and " + player.getChips() + " chips.\n";
+		}
+		returnString = returnString + "---------------------------------------------------\n";
+		return returnString;
+	}
 }

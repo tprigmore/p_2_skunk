@@ -18,7 +18,7 @@ public class Controller
 	{
 		return this.state;
 	}
-	
+
 	public Game getGame()
 	{
 		return game;
@@ -28,7 +28,6 @@ public class Controller
 	{
 		this.game = game;
 	}
-
 
 	public String getMessage()
 	{
@@ -52,15 +51,17 @@ public class Controller
 			returnString = "Add another player? (y/n) ";
 			break;
 		case PLAY_ROUND:
-			returnString = "------------ Next Round ---------------------------\n" + game.getPlayerName()
-					+ "'s turn.  Want to roll? (y/n) ";
+			returnString = "------------ Next Round ---------------------------\n" + 
+					game.getAllPlayerStats() + game.getPlayerName() +
+					"'s turn.  Want to roll? (y/n) ";
 			break;
 		case TAKE_A_TURN:
 			returnString = game.getPlayerName() + "'s turn.  Want to roll? (y/n) ";
 			;
 			break;
 		case FINAL_ROUND:
-			returnString = "------------ Final Round ---------------------------\n" + game.getPlayerName()
+			returnString = "------------ Final Round ---------------------------\n" + 
+					game.getAllPlayerStats() + game.getPlayerName()
 					+ "'s turn.  Want to roll? (y/n) ";
 			break;
 		case GAME_OVER:
@@ -70,7 +71,7 @@ public class Controller
 			returnString = "BYE";
 			break;
 		default:
-			returnString = "No message?????????????";
+			returnString = "????????????No message?????????????";
 			break;
 		}
 		return returnString;
@@ -78,8 +79,8 @@ public class Controller
 
 	public String setResponse(String response)
 	{
-		String returnString = "";                                                                                      
-	
+		String returnString = "";
+
 		switch (state)
 		{
 		case START_GAME:
@@ -93,15 +94,15 @@ public class Controller
 			}
 			break;
 		case RULES:
-			returnString = "Short rules...\n"; 
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
+				returnString = "Short rules...\n";
 				state = ControllerState.DISPLAY_RULES;
 			}
 			else
 			{
 				state = ControllerState.ADD_PLAYER;
-							}
+			}
 			break;
 		case DISPLAY_RULES:
 			if (response.toLowerCase().charAt(0) == 'y')
@@ -133,7 +134,7 @@ public class Controller
 			if (response.toLowerCase().charAt(0) == 'y')
 			{
 				game.takeATurn();
-				returnString = game.getPlayerStats(); 
+				returnString = game.getPlayerRollStats();
 				state = ControllerState.TAKE_A_TURN;
 				if (dice.getState() != DiceState.GOOD)
 				{
@@ -142,18 +143,16 @@ public class Controller
 			}
 			else
 			{
-				returnString = game.getPlayerStats(); 
+				returnString = game.getPlayerRollStats();
 				goToNextPlayersTurn();
 			}
 			break;
 		case GAME_OVER:
 			Player player = this.game.findWinner();
-			// StdOut.println("the winner is" + player.getName());
 			int chips = game.getKitty();
-			// StdOut.println("Give " + chips + " to player.");
 			player.setChips(player.getChips() + chips);
 			game.setKitty(0);
-			returnString = game.getPlayerStats(); 
+			returnString = game.getPlayerRollStats();
 			state = ControllerState.DONE;
 			break;
 		case DONE:
@@ -161,7 +160,7 @@ public class Controller
 		default:
 			break;
 		}
-		return returnString ;
+		return returnString;
 	}
 
 	private void goToNextPlayersTurn()
@@ -182,10 +181,11 @@ public class Controller
 		}
 	}
 
-
-
 	public String getFinalScore()
 	{
-		return "Final Score";
+		String returnString = "\n---------------------------------------------------------\n" + "The winnder is "
+				+ game.findWinner().getName() + "!!!!\n";
+		returnString = returnString + game.getAllPlayerStats();
+		return returnString;
 	}
 }
