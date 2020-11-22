@@ -143,7 +143,7 @@ public class Controller
 			}
 			else
 			{
-				returnString = game.getPlayerRollStats();
+//				returnString = game.getPlayerRollStats();
 				goToNextPlayersTurn();
 			}
 			break;
@@ -152,7 +152,7 @@ public class Controller
 			int chips = game.getKitty();
 			player.setChips(player.getChips() + chips);
 			game.setKitty(0);
-			returnString = game.getPlayerRollStats();
+//			returnString = game.getPlayerRollStats();
 			state = ControllerState.DONE;
 			break;
 		case DONE:

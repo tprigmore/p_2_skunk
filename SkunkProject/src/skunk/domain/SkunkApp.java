@@ -24,6 +24,8 @@ public class SkunkApp
 			StdOut.println(controller.getMessage());
 		}
 		else {
+			StdOut.println(controller.getMessage());
+			StdOut.println(controller.setResponse("y"));
 			StdOut.println(controller.getFinalScore());
 		}
 	}
