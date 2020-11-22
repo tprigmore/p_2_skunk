@@ -255,8 +255,16 @@ class TestController
 
 		assertEquals(ControllerState.GAME_OVER,controller.getState());
 		assertEquals("GAME OVER", controller.getMessage());
-		
+		assertEquals("\n---------------------------------------------------------\n" +
+				"The winner is Scott!!!!\n" + 
+				"Scott has 108 game points and 50 chips.\n" +
+				"Pete has 0 game points and 43 chips.\n" +
+				"---------------------------------------------------\n", 
+				controller.getFinalScore());
+
 		controller.setResponse("y");
+		assertEquals("BYE", controller.getMessage());
+
 		assertEquals(57,controller.getGame().getPlayerChips());
 		assertEquals(0,controller.getGame().getPlayerTurnPoints());
 		assertEquals(108,controller.getGame().getPlayerGamePoints());

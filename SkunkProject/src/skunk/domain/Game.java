@@ -119,16 +119,16 @@ public class Game
 
 	public Player findWinner()
 	{
-		playerIndex = 0;
-		Player activePlayer;
+		Player player;
 		int maxGamePionts = 0;
 		int maxPlayerIndex = 0;
+		
 		for (int i = 0; i < this.playerCount; i++)
 		{
-			activePlayer = this.playerArray.get(playerIndex);
-			if (activePlayer.getGamePoints() > maxGamePionts)
+			player = this.playerArray.get(i);
+			if (player.getGamePoints() > maxGamePionts)
 			{
-				maxGamePionts = activePlayer.getGamePoints();
+				maxGamePionts = player.getGamePoints();
 				maxPlayerIndex = i;
 			}
 		}
