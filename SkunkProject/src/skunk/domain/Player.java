@@ -6,6 +6,8 @@ public class Player
 	private int chips;
 	private int gamePoints;
 	private int turnPoints;
+	private int lastRoll;
+	private DiceState diceState;
 
 	public Player(String name)
 	{
@@ -53,6 +55,26 @@ public class Player
 	public void setName(String name)
 	{
 		this.name = name;
+	}
+
+	public int getLastRoll()
+	{
+		return lastRoll;
+	}
+
+	public void setLastRoll(int lastRoll)
+	{
+		this.lastRoll = lastRoll;
+	}
+
+	public DiceState getDiceState()
+	{
+		return diceState;
+	}
+
+	public void setDiceState(DiceState diceState)
+	{
+		this.diceState = diceState;
 	}
 
 }

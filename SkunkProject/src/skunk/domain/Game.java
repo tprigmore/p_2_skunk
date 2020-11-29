@@ -6,11 +6,12 @@ public class Game
 {
 	private GameState state;
 	private ArrayList<Player> playerArray = new ArrayList<Player>();
+	private Kitty kitty = Kitty.getInstance();
+	private Turn turn;
+	private ScoreBoard scoreBoard = new ScoreBoard();
 	private int playerCount;
 	private int playerIndex;
 	private int lastPlayerIndex = -1;
-	private Kitty kitty = Kitty.getInstance();
-	private Turn turn;
 
 	public Game()
 	{
@@ -42,6 +43,8 @@ public class Game
 
 	public void addPlayer(String name)
 	{
+		ScoreCard scoreCard = new ScoreCard(name);
+		scoreBoard.addScoreCard(scoreCard);
 		Player player = new Player(name);
 		this.playerArray.add(player);
 		this.playerCount++;
@@ -69,10 +72,16 @@ public class Game
 		return this.kitty.getKitty();
 	}
 
-	public int takeATurn()
+	public void takeATurn()
 	{
-		this.turn = new Turn(this.playerArray.get(playerIndex));
-		return (turn.takeATurn());
+		ScoreCard scoreCard = this.scoreBoard.getScoreCard(playerIndex);
+		Player player = this.playerArray.get(playerIndex);
+		this.turn = new Turn(player);
+		turn.takeATurn();
+		scoreCard.setGamePoints(player.getGamePoints());
+		scoreCard.setTurnPoints(player.getTurnPoints());
+		scoreCard.setLastRoll(player.getLastRoll());
+		scoreCard.setDiceState(player.getDiceState());
 	}
 
 	public GameState goToNextPlayer()
@@ -106,6 +115,9 @@ public class Game
 	{
 		Player activePlayer = this.playerArray.get(playerIndex);
 		activePlayer.setGamePoints(activePlayer.getGamePoints() + activePlayer.getTurnPoints());
+		ScoreCard scoreCard = this.scoreBoard.getScoreCard(playerIndex);
+		scoreCard.setGamePoints(activePlayer.getGamePoints());
+		scoreCard.setTurnPoints(activePlayer.getTurnPoints());
 		if (activePlayer.getGamePoints() >= 100)
 		{
 			this.state = GameState.FINAL_ROUND;
@@ -153,49 +165,59 @@ public class Game
 		return activePlayer.getChips();
 	}
 	
-	public String getPlayerRollStats()
+//	public String getPlayerRollStats()
+//	{
+//		Player player;
+//		player = this.playerArray.get(this.playerIndex);
+//		
+//		String returnString;
+//		String skunkString;
+//		switch (this.turn.getState())
+//		{
+//		case GOOD:
+//			skunkString = String.valueOf(this.turn.getLastRoll());
+//			break;
+//		case DOUBLE_SKUNK:
+//			skunkString = "Double Skunk";
+//			break;
+//		case SKUNK_DEUCE:
+//			skunkString = "Skunk Deuce";
+//			break;
+//		case SKUNK:
+//			skunkString = "Skunk";
+//			break;
+//		default:
+//			skunkString = " ";
+//			break;
+//		}
+//		returnString = player.getName() + " rolled a " + skunkString + ". Turn points = "
+//				+ player.getTurnPoints() + ". Game points = " + player.getGamePoints() + ". Chips = "
+//				+ player.getChips() + "\n";
+//		return returnString;
+//	}
+//	
+//	public String getAllPlayerStats()
+//	{
+//		Player player;
+//		String returnString = "";
+//		
+//		for (int i = 0; i < this.playerCount; i++) {
+//		player = this.playerArray.get(i);
+//		
+//		returnString = returnString + player.getName() + " has " + player.getGamePoints() + 
+//				" game points and " + player.getChips() + " chips.\n";
+//		}
+//		returnString = returnString + "---------------------------------------------------\n";
+//		return returnString;
+//	}
+
+	public ScoreCard getScoreCard()
 	{
-		Player player;
-		player = this.playerArray.get(this.playerIndex);
-		
-		String returnString;
-		String skunkString;
-		switch (this.turn.getState())
-		{
-		case GOOD:
-			skunkString = String.valueOf(this.turn.getLastRoll());
-			break;
-		case DOUBLE_SKUNK:
-			skunkString = "Double Skunk";
-			break;
-		case SKUNK_DEUCE:
-			skunkString = "Skunk Deuce";
-			break;
-		case SKUNK:
-			skunkString = "Skunk";
-			break;
-		default:
-			skunkString = " ";
-			break;
-		}
-		returnString = player.getName() + " rolled a " + skunkString + ". Turn points = "
-				+ player.getTurnPoints() + ". Game points = " + player.getGamePoints() + ". Chips = "
-				+ player.getChips() + "\n";
-		return returnString;
+		return this.scoreBoard.getScoreCard(playerIndex);
 	}
-	
-	public String getAllPlayerStats()
+
+	public ScoreBoard getScoreBoard()
 	{
-		Player player;
-		String returnString = "";
-		
-		for (int i = 0; i < this.playerCount; i++) {
-		player = this.playerArray.get(i);
-		
-		returnString = returnString + player.getName() + " has " + player.getGamePoints() + 
-				" game points and " + player.getChips() + " chips.\n";
-		}
-		returnString = returnString + "---------------------------------------------------\n";
-		return returnString;
+		return this.scoreBoard;
 	}
 }

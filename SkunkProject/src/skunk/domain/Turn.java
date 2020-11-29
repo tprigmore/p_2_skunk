@@ -29,6 +29,8 @@ public class Turn
 	{
 		this.dice.roll();
 		this.state = dice.getState();
+		this.player.setLastRoll(dice.getLastRoll());
+		this.player.setDiceState(this.state);
 		if (this.state == DiceState.DOUBLE_SKUNK)
 		{
 			this.kitty.setKitty(this.kitty.getKitty() + DOUBLE_SKUNK_PENALTY);
