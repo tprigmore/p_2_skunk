@@ -47,6 +47,7 @@ class TestTurn
 		Dice dice = Dice.getInstance();
 		dice.setupDie(die1, die2);
 		Kitty kitty = Kitty.getInstance();
+		kitty.setKitty(0);
 		Player player = new Player("Sam");
 		Turn turn = new Turn(player);
 		assertEquals(0, kitty.getKitty());

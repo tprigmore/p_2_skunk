@@ -70,9 +70,12 @@ class TestGame
 		dice.setupDie(die1, die2);
 		Game game = new Game();
 		game.addPlayer("Scott");
-		assertEquals(4, game.takeATurn());
-		assertEquals(10, game.takeATurn());
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
+		assertEquals(4, game.getPlayerTurnPoints());
+		game.takeATurn();
+		assertEquals(10, game.getPlayerTurnPoints());
+		game.takeATurn();
+		assertEquals(0, game.getPlayerTurnPoints());
 	}
 	
 	@Test
@@ -86,18 +89,26 @@ class TestGame
 		game.addPlayer("Scott");
 		game.addPlayer("Joe");
 		game.addPlayer("Pete");
-		assertEquals(4, game.takeATurn());
-		assertEquals(10, game.takeATurn());
+		game.takeATurn();
+		assertEquals(4, game.getPlayerTurnPoints());
+		game.takeATurn();
+		assertEquals(10, game.getPlayerTurnPoints());
 		game.goToNextPlayer();
-		assertEquals(8, game.takeATurn());
-		assertEquals(18, game.takeATurn());
+		game.takeATurn();
+		assertEquals(8, game.getPlayerTurnPoints());
+		game.takeATurn();
+		assertEquals(18, game.getPlayerTurnPoints());
 		game.goToNextPlayer();
-		assertEquals(12, game.takeATurn());
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
+		assertEquals(12, game.getPlayerTurnPoints());
+		game.takeATurn();
+		assertEquals(0, game.getPlayerTurnPoints());
 		game.goToNextPlayer();
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
+		assertEquals(0, game.getPlayerTurnPoints());
 		game.goToNextPlayer();
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
+		assertEquals(0, game.getPlayerTurnPoints());
 	}
 	
 	@Test
@@ -113,8 +124,9 @@ class TestGame
 		game.addPlayer("Pete");
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(50,game.getPlayerChips());
-		assertEquals(4, game.takeATurn());
-		assertEquals(10, game.takeATurn());
+		game.takeATurn();
+		assertEquals(4, game.getPlayerTurnPoints());
+		game.takeATurn();
 		assertEquals(10, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
@@ -125,8 +137,9 @@ class TestGame
 		assertEquals(50,game.getPlayerChips());
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
-		assertEquals(8, game.takeATurn());
-		assertEquals(18, game.takeATurn());
+		game.takeATurn();
+		assertEquals(8, game.getPlayerTurnPoints());
+		game.takeATurn();
 		assertEquals(18, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
@@ -137,8 +150,9 @@ class TestGame
 		assertEquals(50,game.getPlayerChips());
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
-		assertEquals(12, game.takeATurn());
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
+		assertEquals(12, game.getPlayerTurnPoints());
+		game.takeATurn();
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
@@ -148,7 +162,7 @@ class TestGame
 		game.goToNextPlayer();
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(10, game.getPlayerGamePoints());
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(10, game.getPlayerGamePoints());
 		game.addScorePoints();
@@ -158,7 +172,7 @@ class TestGame
 		game.goToNextPlayer();
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(18, game.getPlayerGamePoints());
-		assertEquals(0, game.takeATurn());
+		game.takeATurn();
 		assertEquals(0, game.getPlayerTurnPoints());
 		assertEquals(0, game.getPlayerGamePoints());
 		game.addScorePoints();
