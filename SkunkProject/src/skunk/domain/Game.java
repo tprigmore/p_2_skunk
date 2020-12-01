@@ -9,6 +9,7 @@ public class Game
 	private Kitty kitty = Kitty.getInstance();
 	private Turn turn;
 	private ScoreBoard scoreBoard = new ScoreBoard();
+	private ScoreCard scoreCard;
 	private int playerCount;
 	private int playerIndex;
 	private int lastPlayerIndex = -1;
@@ -35,7 +36,7 @@ public class Game
 	{
 		return state;
 	}
-	
+
 	public void setState(GameState state)
 	{
 		this.state = state;
@@ -43,8 +44,9 @@ public class Game
 
 	public void addPlayer(String name)
 	{
-		ScoreCard scoreCard = new ScoreCard(name);
-		scoreBoard.addScoreCard(scoreCard);
+		ScoreCard scoreCard = new ScoreCard();
+		scoreCard.setPlayerName(name);
+		this.scoreBoard.addScoreCard(scoreCard);
 		Player player = new Player(name);
 		this.playerArray.add(player);
 		this.playerCount++;
@@ -74,14 +76,19 @@ public class Game
 
 	public void takeATurn()
 	{
-		ScoreCard scoreCard = this.scoreBoard.getScoreCard(playerIndex);
 		Player player = this.playerArray.get(playerIndex);
+		ScoreCard scoreCard = this.scoreBoard.getScoreCard(playerIndex);
 		this.turn = new Turn(player);
 		turn.takeATurn();
+
+		scoreCard.setChips(player.getChips());
 		scoreCard.setGamePoints(player.getGamePoints());
 		scoreCard.setTurnPoints(player.getTurnPoints());
-		scoreCard.setLastRoll(player.getLastRoll());
 		scoreCard.setDiceState(player.getDiceState());
+		scoreCard.setLastRoll(player.getLastRoll());
+
+		this.scoreCard = scoreCard;
+
 	}
 
 	public GameState goToNextPlayer()
@@ -129,12 +136,12 @@ public class Game
 		activePlayer.setTurnPoints(0);
 	}
 
-	public Player findWinner()
+	public int findWinner()
 	{
 		Player player;
 		int maxGamePionts = 0;
 		int maxPlayerIndex = 0;
-		
+
 		for (int i = 0; i < this.playerCount; i++)
 		{
 			player = this.playerArray.get(i);
@@ -144,7 +151,7 @@ public class Game
 				maxPlayerIndex = i;
 			}
 		}
-		return this.playerArray.get(maxPlayerIndex);
+		return maxPlayerIndex;
 	}
 
 	public int getPlayerTurnPoints()
@@ -164,60 +171,25 @@ public class Game
 		Player activePlayer = this.playerArray.get(playerIndex);
 		return activePlayer.getChips();
 	}
-	
-//	public String getPlayerRollStats()
-//	{
-//		Player player;
-//		player = this.playerArray.get(this.playerIndex);
-//		
-//		String returnString;
-//		String skunkString;
-//		switch (this.turn.getState())
-//		{
-//		case GOOD:
-//			skunkString = String.valueOf(this.turn.getLastRoll());
-//			break;
-//		case DOUBLE_SKUNK:
-//			skunkString = "Double Skunk";
-//			break;
-//		case SKUNK_DEUCE:
-//			skunkString = "Skunk Deuce";
-//			break;
-//		case SKUNK:
-//			skunkString = "Skunk";
-//			break;
-//		default:
-//			skunkString = " ";
-//			break;
-//		}
-//		returnString = player.getName() + " rolled a " + skunkString + ". Turn points = "
-//				+ player.getTurnPoints() + ". Game points = " + player.getGamePoints() + ". Chips = "
-//				+ player.getChips() + "\n";
-//		return returnString;
-//	}
-//	
-//	public String getAllPlayerStats()
-//	{
-//		Player player;
-//		String returnString = "";
-//		
-//		for (int i = 0; i < this.playerCount; i++) {
-//		player = this.playerArray.get(i);
-//		
-//		returnString = returnString + player.getName() + " has " + player.getGamePoints() + 
-//				" game points and " + player.getChips() + " chips.\n";
-//		}
-//		returnString = returnString + "---------------------------------------------------\n";
-//		return returnString;
-//	}
 
-	public ScoreCard getScoreCard()
+	public void giveWinnerChips()
 	{
-		return this.scoreBoard.getScoreCard(playerIndex);
+		int playerIndex = this.findWinner();
+		Player player = this.playerArray.get(playerIndex);
+		ScoreCard scoreCard = this.scoreBoard.getScoreCard(playerIndex);
+		int chips = this.getKitty();
+		player.setChips(player.getChips() + chips);
+		this.setKitty(0);
+		scoreCard.setChips(player.getChips());
 	}
 
 	public ScoreBoard getScoreBoard()
 	{
 		return this.scoreBoard;
+	}
+
+	public ScoreCard getScoreCard()
+	{
+		return this.scoreCard;
 	}
 }

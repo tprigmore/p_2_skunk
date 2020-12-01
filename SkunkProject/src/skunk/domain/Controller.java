@@ -1,7 +1,5 @@
 package skunk.domain;
 
-import edu.princeton.cs.introcs.StdOut;
-
 public class Controller
 {
 	private ControllerState state;
@@ -16,6 +14,31 @@ public class Controller
 	public ControllerState getState()
 	{
 		return this.state;
+	}
+
+	public int playerCount()
+	{
+		return game.getPlayerCount();
+	}
+
+	public ScoreBoard getScoreBoard()
+	{
+		return game.getScoreBoard();
+	}
+
+	public ScoreCard getScoreCard()
+	{
+		return game.getScoreCard();
+	}
+
+	public String getPlayerName()
+	{
+		return game.getPlayerName();
+	}
+
+	public int getKitty()
+	{
+		return game.getKitty();
 	}
 
 	public void setResponse(String response)
@@ -74,28 +97,90 @@ public class Controller
 			state = ControllerState.PLAY_ROUND;
 			break;
 		case PLAY_ROUND:
-		case FINAL_ROUND:
 		case TAKE_A_TURN:
 			if (getYesOrNo(response))
 			{
 				game.takeATurn();
-				//returnString = game.getPlayerRollStats();
+				// returnString = game.getPlayerRollStats();
 				state = ControllerState.TAKE_A_TURN;
 				if (dice.getState() != DiceState.GOOD)
 				{
-					goToNextPlayersTurn();
+					game.addScorePoints();
+					game.goToNextPlayer();
+					if (game.getState() == GameState.GAME_OVER)
+					{
+						state = ControllerState.GAME_OVER;
+					}
+					else if (game.getState() == GameState.FINAL_ROUND)
+					{
+						state = ControllerState.FINAL_ROUND;
+					}
+					else if (game.getState() == GameState.ROUND_END)
+					{
+						state = ControllerState.NEW_ROUND;
+					}
+					else
+					{
+						state = ControllerState.TAKE_A_TURN;
+					}
 				}
 			}
 			else
 			{
-				goToNextPlayersTurn();
+				game.addScorePoints();
+				game.goToNextPlayer();
+				state = ControllerState.NEXT_PLAYER;
+			}
+			break;
+		case NEXT_PLAYER:
+			if (game.getState() == GameState.GAME_OVER)
+			{
+				state = ControllerState.GAME_OVER;
+			}
+			else if (game.getState() == GameState.FINAL_ROUND)
+			{
+				state = ControllerState.FINAL_ROUND;
+			}
+			else if (game.getState() == GameState.ROUND_END)
+			{
+				state = ControllerState.NEW_ROUND;
+			}
+			else
+			{
+				state = ControllerState.TAKE_A_TURN;
+			}
+			break;
+		case FINAL_ROUND:
+			state = ControllerState.TAKE_FINAL_A_TURN;
+			break;
+		case TAKE_FINAL_A_TURN:
+			if (getYesOrNo(response))
+			{
+				game.takeATurn();
+				// returnString = game.getPlayerRollStats();
+				state = ControllerState.TAKE_FINAL_A_TURN;
+				if (dice.getState() != DiceState.GOOD)
+				{
+					game.addScorePoints();
+					game.goToNextPlayer();
+					if (game.getState() == GameState.GAME_OVER)
+					{
+						state = ControllerState.GAME_OVER;
+					}
+				}
+			}
+			else
+			{
+				game.addScorePoints();
+				game.goToNextPlayer();
+				if (game.getState() == GameState.GAME_OVER)
+				{
+					state = ControllerState.GAME_OVER;
+				}
 			}
 			break;
 		case GAME_OVER:
-			Player player = this.game.findWinner();
-			int chips = game.getKitty();
-			player.setChips(player.getChips() + chips);
-			game.setKitty(0);
+			game.giveWinnerChips();
 			state = ControllerState.DONE;
 			break;
 		case DONE:
@@ -123,52 +208,4 @@ public class Controller
 
 		return returnValue;
 	}
-
-	private void goToNextPlayersTurn()
-	{
-		game.addScorePoints();
-		game.goToNextPlayer();
-		if (game.getState() == GameState.GAME_OVER)
-		{
-			state = ControllerState.GAME_OVER;
-		}
-		else if (game.getState() == GameState.FINAL_ROUND)
-		{
-			state = ControllerState.FINAL_ROUND;
-		}
-		else if (game.getState() == GameState.ROUND_END)
-		{
-			state = ControllerState.PLAY_ROUND;
-		}
-	}
-
-//	public String getFinalScore()
-//	{
-//		String returnString = "\n---------------------------------------------------------\n" + "The winner is "
-//				+ game.findWinner().getName() + "!!!!\n";
-//		returnString = returnString + game.getAllPlayerStats();
-//		return returnString;
-//	}
-
-	public int playerCount()
-	{
-		
-		return game.getPlayerCount();
-	}
-
-	public ScoreBoard getScoreBoard()
-	{
-		return game.getScoreBoard();
-	}
-
-	public ScoreCard getScoreCard()
-	{
-		return game.getScoreCard();
-	}
-
-	public String getPlayerName()
-	{
-		return game.getPlayerName();
-	}
-
 }

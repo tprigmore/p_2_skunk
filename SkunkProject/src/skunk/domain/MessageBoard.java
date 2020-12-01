@@ -13,15 +13,17 @@ public class MessageBoard
 	       map.put(ControllerState.ASK_ADD_PLAYER, "Do you want to add a player? (y/n) " ); 
 	       map.put(ControllerState.ADD_PLAYER, "Enter player's name: ");
 	       map.put(ControllerState.ADD_ANOTHER_PLAYER, "Add another player? (y/n) ");
-	       map.put(ControllerState.NEW_ROUND, "------------ Next Round ---------------------------\n");
+	       map.put(ControllerState.NEW_ROUND, "------------ Next Round ---------------------------");
 	       map.put(ControllerState.PLAY_ROUND, "'s turn.  Want to roll? (y/n) ");
 	       map.put(ControllerState.TAKE_A_TURN, "'s turn.  Want to roll? (y/n) ");
+	       map.put(ControllerState.NEXT_PLAYER, "\n");
 	       map.put(ControllerState.FINAL_ROUND, "------------ Final Round ---------------------------\n");
+	       map.put(ControllerState.TAKE_FINAL_A_TURN, "'s turn.  Want to roll? (y/n) ");
 	       map.put(ControllerState.GAME_OVER, "GAME OVER");
 	       map.put(ControllerState.DONE, "BYE");
 	   }
        // Add elements to the map 
-      
+
 	public String getMessage(ControllerState state)
 	{
 		

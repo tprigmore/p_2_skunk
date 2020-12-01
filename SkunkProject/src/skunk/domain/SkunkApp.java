@@ -21,16 +21,19 @@ public class SkunkApp
 		{
 			StdOut.println(meassage.getMessage(controller.getState()));
 			controller.setResponse(StdIn.readLine());
-
 		}
+		
 		// Playing Game
 		while (controller.getState() != ControllerState.GAME_OVER)
 		{
-			StdOut.println("playing game loop " + controller.getState());
-			if (controller.getState() == ControllerState.NEW_ROUND)
+			//StdOut.println("state = " + controller.getState());
+			if (controller.getState() == ControllerState.NEW_ROUND || controller.getState() == ControllerState.FINAL_ROUND)
 			{
 				StdOut.println(meassage.getMessage(controller.getState()));
 				showGameStats(controller);
+				controller.setResponse("y");
+			}
+			else if (controller.getState() == ControllerState.NEXT_PLAYER) {
 				controller.setResponse("y");
 			}
 			else
@@ -38,18 +41,22 @@ public class SkunkApp
 				StdOut.print(controller.getPlayerName());
 				StdOut.println(meassage.getMessage(controller.getState()));
 				controller.setResponse(StdIn.readLine());
-				showPlayerStats(controller);
+				if (controller.getState() != ControllerState.NEXT_PLAYER) {
+					showPlayerStats(controller);
+				}
 			}
 		}
 
-		// else {
-		// StdOut.println(meassage.getMessage(controller.getState()));
-		// controller.setResponse("y");
-		// StdOut.println(controller.getFinalScore());
-		// }
-
+		// End of Game
+		if (controller.getState() == ControllerState.GAME_OVER)
+		{
+			StdOut.println(meassage.getMessage(controller.getState()));
+			controller.setResponse("y");
+			showGameStats(controller);
+		}
 	}
 
+	// Shows all player stats
 	private static void showGameStats(Controller controller)
 	{
 		ScoreBoard scoreBoard;
@@ -62,16 +69,19 @@ public class SkunkApp
 			StdOut.println(scoreCard.getPlayerName() + " has " + scoreCard.getGamePoints() + " game points, "
 					+ scoreCard.getChips() + " chips.");
 		}
-
+		StdOut.println("The kitty has " + controller.getKitty() + " chip.\n");
 	}
 
+	// Shows players last turn stats
 	private static void showPlayerStats(Controller controller)
 	{
 		ScoreCard scoreCard;
 		scoreCard = controller.getScoreCard();
-		StdOut.println(scoreCard.getPlayerName() + " rolled a " + scoreCard.getLastRoll() + " that was "
+		
+		StdOut.println("\n" + scoreCard.getPlayerName() + " rolled a " + scoreCard.getLastRoll() + " that was "
 				+ scoreCard.getDiceState() + ".  Now has " + scoreCard.getTurnPoints() + " turn points, has "
-				+ scoreCard.getGamePoints() + " game points, and has " + scoreCard.getChips() + " chips.");
+				+ scoreCard.getGamePoints() + " game points, and has " + scoreCard.getChips() + " chips.\n");
 
 	}
+	
 }

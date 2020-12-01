@@ -9,9 +9,8 @@ public class ScoreCard
 	int lastRoll;
 	DiceState diceState;
 	
-	public ScoreCard	(String playerName)
+	public ScoreCard	()
 	{
-		this.playerName = playerName;
 	}
 
 	public String getPlayerName()
