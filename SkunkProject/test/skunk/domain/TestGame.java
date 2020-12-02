@@ -179,5 +179,67 @@ class TestGame
 		assertEquals(0, game.getPlayerGamePoints());
 		assertEquals(46,game.getPlayerChips());
 	}
+	@Test
+	void test_game_test_winner()
+	{
+		Die die1 = new PredictableDie(new int[]{ 1, 6, 6, 6, 6, 6, 1, 6, 6, 6, 6, 6 });
+		Die die2 = new PredictableDie(new int[]{ 1, 6, 6, 6, 6, 6, 4, 6, 6, 6, 6, 6 });
+		Dice dice = Dice.getInstance();
+		dice.setupDie(die1, die2);
+		Game game = new Game();
+		game.addPlayer("Scott");
+		game.addPlayer("Joe");
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(50,game.getPlayerChips());
+		game.takeATurn();
+		game.takeATurn();
+		game.takeATurn();
+		game.takeATurn();
+		game.takeATurn();
+		assertEquals("Scott", game.getPlayerName());
+		assertEquals(60, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
+		game.addScorePoints();
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(60, game.getPlayerGamePoints());
+
+		game.goToNextPlayer();
+		
+		game.takeATurn();
+		assertEquals("Joe", game.getPlayerName());
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
+
+		game.goToNextPlayer();
+		
+		game.takeATurn();
+		game.takeATurn();
+		game.takeATurn();
+		game.takeATurn();
+		game.takeATurn();
+		assertEquals("Scott", game.getPlayerName());
+		assertEquals(60, game.getPlayerTurnPoints());
+		assertEquals(60, game.getPlayerGamePoints());
+		game.addScorePoints();
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(120, game.getPlayerGamePoints());
+
+		game.goToNextPlayer();
+
+		game.takeATurn();
+		assertEquals("Joe", game.getPlayerName());
+		assertEquals(0, game.getPlayerTurnPoints());
+		assertEquals(0, game.getPlayerGamePoints());
+		
 	
+		assertEquals(0, game.findWinner());
+		game.giveWinnerChips();
+		assertEquals(45, game.getPlayerChips());
+
+		ScoreBoard  sb = game.getScoreBoard();
+		ScoreCard sc1 = sb.getScoreCard(0);
+		assertEquals("Scott",sc1.getPlayerName());
+		
+		
+	}
 }

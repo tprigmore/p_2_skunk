@@ -16,10 +16,10 @@ public class Controller
 		return this.state;
 	}
 
-	public int playerCount()
-	{
-		return game.getPlayerCount();
-	}
+//	public int getPlayerCount()
+//	{
+//		return game.getPlayerCount();
+//	}
 
 	public ScoreBoard getScoreBoard()
 	{
@@ -190,7 +190,7 @@ public class Controller
 		}
 	}
 
-	private boolean getYesOrNo(String response)
+	public boolean getYesOrNo(String response)
 	{
 		boolean returnValue;
 		if (response.equals(""))

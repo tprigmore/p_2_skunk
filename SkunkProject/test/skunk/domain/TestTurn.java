@@ -136,5 +136,6 @@ class TestTurn
 		assertEquals(5, turn.takeATurn());
 		assertEquals(0, turn.takeATurn());
 		assertEquals(8, turn.takeATurn());
+		assertEquals(8, turn.getLastRoll());
 	}
 }
