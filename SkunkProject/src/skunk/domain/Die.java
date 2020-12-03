@@ -1,7 +1,8 @@
 package skunk.domain;
 
-public interface Die {
-   int getLastRoll();
+public interface Die
+{
+	int getLastRoll();
 
-void roll();
+	void roll();
 }

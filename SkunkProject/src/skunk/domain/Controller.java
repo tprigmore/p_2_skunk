@@ -16,10 +16,10 @@ public class Controller
 		return this.state;
 	}
 
-//	public int getPlayerCount()
-//	{
-//		return game.getPlayerCount();
-//	}
+	// public int getPlayerCount()
+	// {
+	// return game.getPlayerCount();
+	// }
 
 	public ScoreBoard getScoreBoard()
 	{

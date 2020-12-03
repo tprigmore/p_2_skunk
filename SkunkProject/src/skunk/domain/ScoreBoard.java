@@ -6,8 +6,9 @@ public class ScoreBoard
 {
 	private ArrayList<ScoreCard> scoreCardArray = new ArrayList<ScoreCard>();
 	private int numberOfScoreCards;
-	
-	public ScoreBoard() {
+
+	public ScoreBoard()
+	{
 		this.setNumberOfScoreCards(0);
 	}
 
@@ -16,7 +17,7 @@ public class ScoreBoard
 		this.scoreCardArray.add(scoreCard);
 		this.setNumberOfScoreCards(this.getNumberOfScoreCards() + 1);
 	}
-	
+
 	public ScoreCard getScoreCard(int index)
 	{
 		return this.scoreCardArray.get(index);

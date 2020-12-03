@@ -3,9 +3,9 @@ package skunk.domain;
 import edu.princeton.cs.introcs.StdOut;
 
 /**
- * Dice represents a single pair of rollable Die objects.  Dice can
- * represent real dice randomly generating sums of their two values.  
- * Or use predictable die behavior.
+ * Dice represents a single pair of rollable Die objects. Dice can represent
+ * real dice randomly generating sums of their two values. Or use predictable
+ * die behavior.
  * 
  * This creates a singleton pattern.
  * 
@@ -20,8 +20,8 @@ public class Dice
 	// Instance fields (variables) may be declared anywhere in class body
 	// Convention: put at top
 
-//	private static Dice dice = new Dice() ;
-	private static Dice dice ;	
+	// private static Dice dice = new Dice() ;
+	private static Dice dice;
 	private DiceState state;
 	private int lastRoll;
 	private Die die1;
@@ -36,15 +36,16 @@ public class Dice
 
 	public static Dice getInstance()
 	{
-		if (null == dice) {
+		if (null == dice)
+		{
 			dice = new Dice();
 		}
 		return dice;
 	}
 
-	public void setupDie(Die die1, Die die2) 
+	public void setupDie(Die die1, Die die2)
 	{
-		// initialize instance variables die1 and die2 
+		// initialize instance variables die1 and die2
 		dice.die1 = die1;
 		dice.die2 = die2;
 		dice.roll();

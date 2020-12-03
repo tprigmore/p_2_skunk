@@ -4,32 +4,33 @@ import java.util.HashMap;
 
 public class MessageBoard
 {
-	   private HashMap<ControllerState, String> map = new HashMap<>(); 
-	   
-	   public MessageBoard () {
-		   map.put(ControllerState.START_GAME, "Do you want to play skunk? (y/n) "); 
-	       map.put(ControllerState.RULES, "Do you want to see the rules? (y/n) "); 
-	       map.put(ControllerState.DISPLAY_RULES, getRules() ); 
-	       map.put(ControllerState.ASK_ADD_PLAYER, "Do you want to add a player? (y/n) " ); 
-	       map.put(ControllerState.ADD_PLAYER, "Enter player's name: ");
-	       map.put(ControllerState.ADD_ANOTHER_PLAYER, "Add another player? (y/n) ");
-	       map.put(ControllerState.NEW_ROUND, "------------ Next Round ---------------------------");
-	       map.put(ControllerState.PLAY_ROUND, "'s turn.  Want to roll? (y/n) ");
-	       map.put(ControllerState.TAKE_A_TURN, "'s turn.  Want to roll? (y/n) ");
-	       map.put(ControllerState.NEXT_PLAYER, "\n");
-	       map.put(ControllerState.FINAL_ROUND, "------------ Final Round ---------------------------\n");
-	       map.put(ControllerState.TAKE_FINAL_A_TURN, "'s turn.  Want to roll? (y/n) ");
-	       map.put(ControllerState.GAME_OVER, "GAME OVER");
-	       map.put(ControllerState.DONE, "BYE");
-	   }
-       // Add elements to the map 
+	private HashMap<ControllerState, String> map = new HashMap<>();
+
+	public MessageBoard()
+	{
+		map.put(ControllerState.START_GAME, "Do you want to play skunk? (y/n) ");
+		map.put(ControllerState.RULES, "Do you want to see the rules? (y/n) ");
+		map.put(ControllerState.DISPLAY_RULES, getRules());
+		map.put(ControllerState.ASK_ADD_PLAYER, "Do you want to add a player? (y/n) ");
+		map.put(ControllerState.ADD_PLAYER, "Enter player's name: ");
+		map.put(ControllerState.ADD_ANOTHER_PLAYER, "Add another player? (y/n) ");
+		map.put(ControllerState.NEW_ROUND, "------------ Next Round ---------------------------");
+		map.put(ControllerState.PLAY_ROUND, "'s turn.  Want to roll? (y/n) ");
+		map.put(ControllerState.TAKE_A_TURN, "'s turn.  Want to roll? (y/n) ");
+		map.put(ControllerState.NEXT_PLAYER, "\n");
+		map.put(ControllerState.FINAL_ROUND, "------------ Final Round ---------------------------\n");
+		map.put(ControllerState.TAKE_FINAL_A_TURN, "'s turn.  Want to roll? (y/n) ");
+		map.put(ControllerState.GAME_OVER, "GAME OVER");
+		map.put(ControllerState.DONE, "BYE");
+	}
+	// Add elements to the map
 
 	public String getMessage(ControllerState state)
 	{
-		
+
 		return map.get(state);
 	}
-	
+
 	public String getRules()
 	{
 		String rules = "\nThe game of Skunk was created by named W.H. Schaper back in 1953\n"
@@ -56,8 +57,7 @@ public class MessageBoard
 				+ "other players, or they can stop.\n"
 				+ "When the first player to reach or exceed 100 points stops, all the other\n"
 				+ "players get another chance to roll, giving them a chance to win the game.\n"
-				+ "The winning player gets all the kitty points.\n"
-				+ "\nPress any ket to continue...\n";
+				+ "The winning player gets all the kitty points.\n" + "\nPress any ket to continue...\n";
 
 		return rules;
 	}

@@ -2,14 +2,14 @@ package skunk.domain;
 
 public class ScoreCard
 {
-	String playerName ;
+	String playerName;
 	int gamePoints;
 	int turnPoints;
 	int chips;
 	int lastRoll;
 	DiceState diceState;
-	
-	public ScoreCard	()
+
+	public ScoreCard()
 	{
 	}
 

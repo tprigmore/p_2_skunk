@@ -22,18 +22,20 @@ public class SkunkApp
 			StdOut.println(meassage.getMessage(controller.getState()));
 			controller.setResponse(StdIn.readLine());
 		}
-		
+
 		// Playing Game
 		while (controller.getState() != ControllerState.GAME_OVER)
 		{
-			//StdOut.println("state = " + controller.getState());
-			if (controller.getState() == ControllerState.NEW_ROUND || controller.getState() == ControllerState.FINAL_ROUND)
+			// StdOut.println("state = " + controller.getState());
+			if (controller.getState() == ControllerState.NEW_ROUND
+					|| controller.getState() == ControllerState.FINAL_ROUND)
 			{
 				StdOut.println(meassage.getMessage(controller.getState()));
 				showGameStats(controller);
 				controller.setResponse("y");
 			}
-			else if (controller.getState() == ControllerState.NEXT_PLAYER) {
+			else if (controller.getState() == ControllerState.NEXT_PLAYER)
+			{
 				controller.setResponse("y");
 			}
 			else
@@ -41,7 +43,8 @@ public class SkunkApp
 				StdOut.print(controller.getPlayerName());
 				StdOut.println(meassage.getMessage(controller.getState()));
 				controller.setResponse(StdIn.readLine());
-				if (controller.getState() != ControllerState.NEXT_PLAYER) {
+				if (controller.getState() != ControllerState.NEXT_PLAYER)
+				{
 					showPlayerStats(controller);
 				}
 			}
@@ -77,11 +80,11 @@ public class SkunkApp
 	{
 		ScoreCard scoreCard;
 		scoreCard = controller.getScoreCard();
-		
+
 		StdOut.println("\n" + scoreCard.getPlayerName() + " rolled a " + scoreCard.getLastRoll() + " that was "
 				+ scoreCard.getDiceState() + ".  Now has " + scoreCard.getTurnPoints() + " turn points, has "
 				+ scoreCard.getGamePoints() + " game points, and has " + scoreCard.getChips() + " chips.\n");
 
 	}
-	
+
 }
