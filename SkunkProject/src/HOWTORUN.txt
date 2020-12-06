@@ -1,3 +1,3 @@
 HOWTORUN.txt
 
-This is run just like P1.  In Eclipse, right-click on SkunkApp.java and select "Run As".
+This is run just like P1.  In Eclipse, right-click on SkunkApp.java and select "Run As" > "java application".
