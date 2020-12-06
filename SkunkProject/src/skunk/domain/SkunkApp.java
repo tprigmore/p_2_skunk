@@ -11,6 +11,7 @@ public class SkunkApp
 		Controller controller = new Controller();
 		MessageBoard meassage = new MessageBoard();
 
+		// Dice Singleton - should be only in game - problems with junit testing 
 		Dice dice = Dice.getInstance();
 		Die die1 = new RandomDie();
 		Die die2 = new RandomDie();
